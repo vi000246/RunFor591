@@ -12,4 +12,8 @@ F:\Projects\Github\RunFor591\RunFor591\bin\Debug\log4net.xml
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\log4net.config
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\RestSharp.dll
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\RestSharp.xml
-F:\Projects\Github\RunFor591\RunFor591\obj\Debug\RunFor591.csprojAssemblyReference.cache
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\JsonConfig.dll
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\JsonFx.dll
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\JsonConfig.pdb
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\JsonFx.xml
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\settings.conf

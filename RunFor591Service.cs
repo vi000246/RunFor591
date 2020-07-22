@@ -17,8 +17,8 @@ namespace RunFor591
         {
             var MyTimer = new Timer();
             MyTimer.Elapsed += new ElapsedEventHandler(MyTimer_Elapsed);
-            var minute = (float)1/60;//每N分鐘執行一次
-            MyTimer.Interval = (int)(minute * 60) * 1000;
+            var interval = Setting.GetTimerInterval();
+            MyTimer.Interval = interval * 1000;
             MyTimer.Start();
         }
         private void MyTimer_Elapsed(object sender, ElapsedEventArgs e)
