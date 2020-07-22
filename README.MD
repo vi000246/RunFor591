@@ -1,4 +1,4 @@
-﻿此為window service專用，使用simpleService lib，https://github.com/davidwhitney/SimpleServices  
+﻿此為window service專案，使用simpleService lib，https://github.com/davidwhitney/SimpleServices  
 --------  
 可以使用以下方法安裝:  
 

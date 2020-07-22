@@ -17,3 +17,4 @@ F:\Projects\Github\RunFor591\RunFor591\bin\Debug\JsonFx.dll
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\JsonConfig.pdb
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\JsonFx.xml
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\settings.conf
+F:\Projects\Github\RunFor591\RunFor591\obj\Debug\RunFor591.csprojAssemblyReference.cache
