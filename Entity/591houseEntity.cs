@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RunFor591
+namespace RunFor591.Entity
 {
-    public class Notify
+    public class ResponseHouseEntity
     {
-        //發送訊息到line
+
     }
 }

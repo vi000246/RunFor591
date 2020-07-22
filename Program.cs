@@ -16,7 +16,6 @@ namespace RunFor591
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         /// <summary>
         /// 應用程式的主要進入點。
-        /// 如果要用console開啟，需要在專案的屬性頁面設定output type = 主控台應用
         /// </summary>
         private static void Main(string[] args)
         {

@@ -61,6 +61,8 @@
     <Compile Include="Config.cs" />
     <Compile Include="Crawler.cs" />
     <Compile Include="DataBase.cs" />
+    <Compile Include="Entity\591houseEntity.cs" />
+    <Compile Include="Entity\ArchiveHouse.cs" />
     <Compile Include="Notify.cs" />
     <Compile Include="RunFor591Service.cs" />
     <Compile Include="Program.cs">
@@ -76,5 +78,6 @@
     <None Include="packages.config" />
     <None Include="README.MD" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

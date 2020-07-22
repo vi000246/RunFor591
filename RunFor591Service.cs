@@ -25,11 +25,12 @@ namespace RunFor591
 
         {
             AppContext.Log("service run.");
-            log.Debug("開始寫文字log");
+            log.Debug("Application Excute");
         }
         public void Stop()
         {
             AppContext.Log("Service stop!");
+            log.Debug("Application Stopped");
         }
     }
 }
