@@ -1,0 +1,12 @@
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\RunFor591.exe.config
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\RunFor591.exe
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\RunFor591.pdb
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\SimpleServices.dll
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\SimpleServices.pdb
+F:\Projects\Github\RunFor591\RunFor591\obj\Debug\RunFor591.csproj.CoreCompileInputs.cache
+F:\Projects\Github\RunFor591\RunFor591\obj\Debug\RunFor591.csproj.CopyComplete
+F:\Projects\Github\RunFor591\RunFor591\obj\Debug\RunFor591.exe
+F:\Projects\Github\RunFor591\RunFor591\obj\Debug\RunFor591.pdb
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\log4net.dll
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\log4net.xml
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\log4net.config
