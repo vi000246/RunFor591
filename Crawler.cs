@@ -17,6 +17,7 @@ namespace RunFor591
             return this._Url;
         }
 
+        //需要loop取得整層住家/套房/獨立套房的data
         public string GetRawContext()
         {
             var client = new RestClient("https://api.twitter.com/1.1");
