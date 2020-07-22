@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Config.cs" />
     <Compile Include="Crawler.cs" />
+    <Compile Include="DataBase.cs" />
     <Compile Include="Notify.cs" />
     <Compile Include="RunFor591Service.cs" />
     <Compile Include="Program.cs">

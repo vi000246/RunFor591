@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace RunFor591
 {
-    public class Config
+    //使用json hosting當作database
+    public class DataBase
     {
+        public void GetData()
+        {
 
+        }
     }
 }
