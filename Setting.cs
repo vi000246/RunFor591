@@ -31,10 +31,10 @@ namespace RunFor591
             }
         }
 
-        //取得json db的key
-        public static string GetJsonBinKey()
+        //取得json db的url位置
+        public static string GetJsonHostingUrlPath()
         {
-            return Config.User.JsonBinKey;
+            return Config.User.JsonHostingUrlPath;
         }
 
         //取得要通知的line的key
