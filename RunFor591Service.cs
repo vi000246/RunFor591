@@ -31,7 +31,8 @@ namespace RunFor591
 
         private void TestMethod()
         {
-            var a = Setting.GetFilterCondition();
+            // var a = Setting.GetFilterCondition();
+            new Crawler().GetRawContext();
         }
 
         public void Stop()
