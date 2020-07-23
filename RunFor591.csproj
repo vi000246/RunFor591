@@ -64,12 +64,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrawlerUtility\UrlGenerator.cs" />
+    <Compile Include="DataBase\IDataBase.cs" />
+    <Compile Include="NotifyUtility\INotify.cs" />
     <Compile Include="Setting.cs" />
-    <Compile Include="Crawler.cs" />
-    <Compile Include="DataBase.cs" />
+    <Compile Include="CrawlerUtility\Crawler.cs" />
+    <Compile Include="DataBase\JsonBin.cs" />
     <Compile Include="Entity\591houseEntity.cs" />
     <Compile Include="Entity\ArchiveHouse.cs" />
-    <Compile Include="Notify.cs" />
+    <Compile Include="NotifyUtility\LineNotify.cs" />
     <Compile Include="RunFor591Service.cs" />
     <Compile Include="Program.cs">
       <SubType>Component</SubType>
