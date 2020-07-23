@@ -16,7 +16,6 @@ namespace RunFor591
 
         public void Start(string[] args)
         {
-            TestMethod();
             var MyTimer = new Timer();
             MyTimer.Elapsed += new ElapsedEventHandler(MyTimer_Elapsed);
             var interval = Setting.GetTimerInterval();
@@ -27,14 +26,14 @@ namespace RunFor591
 
         {
             AppContext.Log("service run.");
+            TestMethod();
             log.Debug("Application Excute");
         }
 
         private void TestMethod()
         {
             // var a = Setting.GetFilterCondition();
-            var url = new UrlGenerator().GetEntryUrl();
-            var c = new Crawler().GetCSRFToken();
+            new Crawler().StartCrawl591();
         }
 
         public void Stop()
