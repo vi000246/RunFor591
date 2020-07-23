@@ -18,3 +18,6 @@ F:\Projects\Github\RunFor591\RunFor591\bin\Debug\JsonConfig.pdb
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\JsonFx.xml
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\settings.conf
 F:\Projects\Github\RunFor591\RunFor591\obj\Debug\RunFor591.csprojAssemblyReference.cache
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\Json.Net.dll
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\Newtonsoft.Json.dll
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\Newtonsoft.Json.xml
