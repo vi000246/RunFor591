@@ -10,12 +10,6 @@ namespace RunFor591
 {
     public class Crawler
     {
-        private string _Url { get; set; } = "";
-
-        public string UrlBuilder()
-        {
-            return this._Url;
-        }
 
         //需要loop取得整層住家/套房/獨立套房的data
         public string GetRawContext()
