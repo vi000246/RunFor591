@@ -15,6 +15,7 @@ namespace RunFor591
 
         public void Start(string[] args)
         {
+            TestMethod();
             var MyTimer = new Timer();
             MyTimer.Elapsed += new ElapsedEventHandler(MyTimer_Elapsed);
             var interval = Setting.GetTimerInterval();
@@ -27,6 +28,12 @@ namespace RunFor591
             AppContext.Log("service run.");
             log.Debug("Application Excute");
         }
+
+        private void TestMethod()
+        {
+            var a = Setting.GetFilterCondition();
+        }
+
         public void Stop()
         {
             AppContext.Log("Service stop!");
