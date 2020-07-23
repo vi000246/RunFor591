@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using RunFor591.CrawlerUtility;
 using SimpleServices;
 
 namespace RunFor591
@@ -32,7 +33,8 @@ namespace RunFor591
         private void TestMethod()
         {
             // var a = Setting.GetFilterCondition();
-            new Crawler().GetRawContext();
+            var url = new UrlGenerator().GetEntryUrl();
+            var c = new Crawler().GetCSRFToken();
         }
 
         public void Stop()

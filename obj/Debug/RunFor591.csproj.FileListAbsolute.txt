@@ -21,3 +21,6 @@ F:\Projects\Github\RunFor591\RunFor591\obj\Debug\RunFor591.csprojAssemblyReferen
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\Json.Net.dll
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\Newtonsoft.Json.dll
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\Newtonsoft.Json.xml
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\HtmlAgilityPack.dll
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\HtmlAgilityPack.pdb
+F:\Projects\Github\RunFor591\RunFor591\bin\Debug\HtmlAgilityPack.xml
