@@ -21,6 +21,20 @@ namespace RunFor591
             _591client.CookieContainer = new System.Net.CookieContainer();
         }
 
+        public void StartCrawl591()
+        {
+            var csrfToken = GetCSRFToken();
+            var houseList = GetHouseList();
+            var matchHouse = FilterHouse();
+            var ShouldAlertHouse = SyncDataFromDB();
+            //call notify service
+        }
+
+        public string GetHouseList()
+        {
+            return "";
+        }
+
         public string GetCSRFToken()
         {
             var html = Get591RawContext(null);
@@ -79,9 +93,14 @@ namespace RunFor591
 
         }
 
-        public void FilterHouse()
+        public string SyncDataFromDB()
         {
+            return "";
+        }
 
+        public string FilterHouse()
+        {
+            return "";
         }
     }
 }
