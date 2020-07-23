@@ -26,12 +26,19 @@ namespace RunFor591
             }
             catch (Exception ex)
             {
+                log.Debug("GetTimerInterval fail.Invalid setting. " + ex.Message);
                 throw ex;
             }
         }
 
         //取得json db的key
         public static string GetJsonBinKey()
+        {
+            return Config.User.JsonBinKey;
+        }
+
+        //取得要通知的line的key
+        public static string GetLineApiKey()
         {
             return "";
         }
@@ -45,18 +52,27 @@ namespace RunFor591
         private static T CastSettingToClass<T>(string key)
         {
             object json;
-            
-            if (((ConfigObject) Config.User).TryGetValue(key, out json))
+
+            try
             {
-                return JsonConvert.DeserializeObject<T>(json.ToString()); 
+                if (((ConfigObject) Config.User).TryGetValue(key, out json))
+                {
+                    return JsonConvert.DeserializeObject<T>(json.ToString());
+                }
+                else
+                {
+                    var msg = "Cannot CastSettingToClass T:" + nameof(T);
+                    log.Debug(msg);
+                    throw new ArgumentException(msg);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                log.Debug("Cannot CastSettingToClass T:" + nameof(T));
-                return default(T);
+                var msg = "cast setting fail. " + ex.Message;
+                log.Debug(msg);
+                throw new ArgumentException(msg);
             }
         }
 
-        //取得要通知的line的key
     }
 }
