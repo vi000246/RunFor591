@@ -5,9 +5,11 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
+using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
 using RunFor591.CrawlerUtility;
+using RunFor591.Entity;
 
 namespace RunFor591
 {
@@ -24,24 +26,31 @@ namespace RunFor591
         public void StartCrawl591()
         {
             var csrfToken = GetCSRFToken();
-            var houseList = GetHouseList();
+            var houseList = GetHouseList(csrfToken);
             var matchHouse = FilterHouse();
             var ShouldAlertHouse = SyncDataFromDB();
             //call notify service
         }
 
-        public string GetHouseList()
+        public string GetHouseList(string csrfToken)
         {
+            var urls = new UrlGenerator().GetHouseListApiUrl();
+            foreach (var url in urls)
+            {
+                var response = Get591Response(url, Method.POST,csrfToken).Content;
+                var houseResponse = JsonConvert.DeserializeObject<ResponseHouseEntity>(response);
+            }
+            
             return "";
         }
 
         public string GetCSRFToken()
         {
-            var html = Get591RawContext(null);
-            return GetCSRFtokenFromHtml(html);
+            var res = Get591Response(null);
+            return GetCSRFtokenFromHtml(res.Content);
         }
 
-        public string Get591RawContext(string routeUrl)
+        public IRestResponse Get591Response(string routeUrl,Method method = Method.GET,string token = null)
         {
             RestRequest request;
             if (string.IsNullOrEmpty(routeUrl))
@@ -52,9 +61,11 @@ namespace RunFor591
                 request = new RestRequest(routeUrl);
             }
 
-            request.Method = Method.GET;
+            request.Method = method;
+            if(token != null)
+                request.AddHeader("X-CSRF-TOKEN", token);
             var response = _591client.Get(request);
-            return response.Content;
+            return response;
         }
 
         public string GetCSRFtokenFromHtml(string html)
