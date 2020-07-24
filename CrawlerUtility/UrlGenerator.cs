@@ -49,9 +49,10 @@ namespace RunFor591.CrawlerUtility
                 }
             }
 
+            //依據region，groupy by底下的捷運線跟鄉鎮
+            //如果該region底下沒東西，也要組出url 
             //loop縣市、鄉鎮、捷運
             //如果有選捷運，依據捷運線所屬哪個捷運，組出mrt參數(對應到region 桃捷=6 北捷=1 高雄捷運=17)
-            //依據region，groupy by底下的捷運線跟鄉鎮
 
             var qs = String.Join("&", returnParams.ToArray());
             foreach (var kind in filter.Kind)
@@ -64,6 +65,7 @@ namespace RunFor591.CrawlerUtility
         private void ValidateFilterCondition(SearchModel filter)
         {
             //判斷是否有選擇region
+            //判斷各參數是否列在mrt.json跟 region.json裡
             //如果有選擇鄉鎮section，判斷是否在region底下
             //如果有選擇捷運線，判斷是否在region底下
             //如果有選擇捷運線，捷運站為必選
