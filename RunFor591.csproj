@@ -94,6 +94,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="LocationEntity\MRT.json" />
+    <None Include="LocationEntity\Region.json" />
     <None Include="settings.conf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
