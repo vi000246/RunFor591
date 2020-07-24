@@ -8,6 +8,7 @@ namespace RunFor591.LocationEntity
 {
     public class RegionEntity
     {
+        //縣市
         public List<Region> region { get; set; }
     }
     public class Section
@@ -21,6 +22,7 @@ namespace RunFor591.LocationEntity
     {
         public int id { get; set; }
         public string txt { get; set; }
+        //鄉鎮
         public List<Section> section { get; set; }
 
     }
