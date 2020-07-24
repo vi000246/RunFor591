@@ -51,6 +51,7 @@ namespace RunFor591.CrawlerUtility
 
             //loop縣市、鄉鎮、捷運
             //如果有選捷運，依據捷運線所屬哪個捷運，組出mrt參數(對應到region 桃捷=6 北捷=1 高雄捷運=17)
+            //依據region，groupy by底下的捷運線跟鄉鎮
 
             var qs = String.Join("&", returnParams.ToArray());
             foreach (var kind in filter.Kind)
