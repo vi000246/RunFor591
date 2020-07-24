@@ -9,7 +9,7 @@ namespace RunFor591.Entity
     public class SearchModel
     {
         public List<string> Kind { get; set; }
-        public string Region { get; set; }
+        public List<string> Region { get; set; }
         public string Section { get; set; }
         public string RendPrice { get; set; }
         public string Area { get; set; }
