@@ -26,7 +26,10 @@ namespace RunFor591.LocationEntity
         public string lat { get; set; }
         public string lng { get; set; }
         public string name { get; set; }
+        //捷運線代碼
         public string sid { get; set; }
+        //不知有何作用
+        [Obsolete("This property is useless,temp ban from class")]
         public string zoom { get; set; }
         //捷運站
         public List<Station> station { get; set; }
@@ -35,11 +38,16 @@ namespace RunFor591.LocationEntity
 
     public class Station
     {
+        //不知有何作用
+        [Obsolete("This property is useless,temp ban from class")]
         public string sid { get; set; }
         public string name { get; set; }
         public string lat { get; set; }
         public string lng { get; set; }
+        //不知有何作用
+        [Obsolete("This property is useless,temp ban from class")]
         public string zoom { get; set; }
+        //捷運站代碼
         public string nid { get; set; }
 
     }
