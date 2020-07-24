@@ -8,11 +8,12 @@ namespace RunFor591.LocationEntity
 {
     public class MRTEntity
     {
-        public List<TaipeiMrt> taipei_mrt { get; set; }
-        public List<KaohsiungMrt> kaohsiung_mrt { get; set; }
-        public List<TaoyuanMrt> taoyuan_mrt { get; set; }
+        public TaipeiMrt taipei_mrt { get; set; }
+        public KaohsiungMrt kaohsiung_mrt { get; set; }
+        public TaoyuanMrt taoyuan_mrt { get; set; }
 
     }
+
     public class Station
     {
         public string sid { get; set; }
@@ -24,7 +25,7 @@ namespace RunFor591.LocationEntity
 
     }
 
-    public class TaipeiMrt
+    public class Mrtline
     {
         public string lat { get; set; }
         public string lng { get; set; }
@@ -32,6 +33,13 @@ namespace RunFor591.LocationEntity
         public string sid { get; set; }
         public string zoom { get; set; }
         public List<Station> station { get; set; }
+
+    }
+
+    public class TaipeiMrt
+    {
+        public string mrt { get; set; }
+        public List<Mrtline> mrtline { get; set; }
 
     }
 
@@ -46,7 +54,7 @@ namespace RunFor591.LocationEntity
 
     }
 
-    public class KaohsiungMrt
+    public class Mrtline2
     {
         public string lat { get; set; }
         public string lng { get; set; }
@@ -54,6 +62,13 @@ namespace RunFor591.LocationEntity
         public string sid { get; set; }
         public string zoom { get; set; }
         public List<Station2> station { get; set; }
+
+    }
+
+    public class KaohsiungMrt
+    {
+        public string mrt { get; set; }
+        public List<Mrtline2> mrtline { get; set; }
 
     }
 
@@ -68,7 +83,7 @@ namespace RunFor591.LocationEntity
 
     }
 
-    public class TaoyuanMrt
+    public class Mrtline3
     {
         public string lat { get; set; }
         public string lng { get; set; }
@@ -78,6 +93,15 @@ namespace RunFor591.LocationEntity
         public List<Station3> station { get; set; }
 
     }
+
+    public class TaoyuanMrt
+    {
+        public string mrt { get; set; }
+        public List<Mrtline3> mrtline { get; set; }
+
+    }
+
+
 
 
 }

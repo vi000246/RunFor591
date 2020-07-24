@@ -37,39 +37,75 @@ namespace RunFor591.CrawlerUtility
             var filter = Setting.GetFilterCondition();
             ValidateFilterCondition(filter);
 
-            PropertyInfo[] properties = typeof(SearchModel).GetProperties();
+            //先組出base condition
+            PropertyInfo[] properties = typeof(BaseCondition).GetProperties();
             foreach (PropertyInfo property in properties)
             {
-                var settingValue = GetPropValue(filter,property.Name);
-                //kind是用來判斷租屋類型 1:整層住家 2:獨立套房 3:分租套房
-                //region是縣市，kind跟region都不能多選,必須loop產出request url
-                if (property.Name != "Kind" && property.Name != "Region")
-                {
+                var settingValue = GetPropValue(filter.baseCondition,property.Name);
+                if(settingValue != null && !string.IsNullOrEmpty(settingValue.ToString()))
                     returnParams.Add(String.Format("{0}={1}", property.Name, settingValue));
-                }
             }
+            
+            //依據地區搜尋條件，組出多組query string
+            var querys = GenerateUrlBySearchModel(filter.regionCondition);
 
-            //依據region，groupy by底下的捷運線跟鄉鎮
-            //如果該region底下沒東西，也要組出url 
-            //loop縣市、鄉鎮、捷運
-            //如果有選捷運，依據捷運線所屬哪個捷運，組出mrt參數(對應到region 桃捷=6 北捷=1 高雄捷運=17)
-
-            var qs = String.Join("&", returnParams.ToArray());
-            foreach (var kind in filter.Kind)
+            var baseConditionQueryString = String.Join("&", returnParams.ToArray());
+            foreach (var query in querys)
             {
-                yield return "?kind=" + kind + qs;
+                yield return "?" + query + baseConditionQueryString;
             }
             
         }
 
+        //如果該region底下沒東西，也要組出url  
+        //如果有選捷運，依據捷運線所屬哪個捷運，組出mrt參數(對應到region 桃捷=6 北捷=1 高雄捷運=17)
+        private List<string> GenerateUrlBySearchModel(RegionCondition condition)
+        {
+            var conditionQueryString = new List<string>();
+            //取出region跟mrt對照表
+            //依據region，groupy by底下的捷運線跟鄉鎮
+
+            //loop每個縣市
+            foreach (var region in condition.Region)
+            {
+                //loop每個租屋類型
+                foreach (var kind in condition.kind)
+                {
+                    foreach (var section in condition.Section)
+                    {
+                       //region + kind + section 
+                    }
+
+                    foreach (var matline in condition.mrtline)
+                    {
+                        foreach (var mrtStation in condition.mrtcoods)
+                        {
+                            //region + kind + marline + mrtStation
+                        }
+                    }
+
+                    if (condition.Section.Count == 0 && condition.mrtline.Count == 0)
+                    {
+                        //組出region的url region + kind
+                    }
+                }
+            }
+
+            return conditionQueryString;
+        }
+
         private void ValidateFilterCondition(SearchModel filter)
         {
-            //判斷是否有選擇region
-            //判斷各參數是否列在mrt.json跟 region.json裡
-            //如果有選擇鄉鎮section，判斷是否在region底下
-            //如果有選擇捷運線，判斷是否在region底下
-            //如果有選擇捷運線，捷運站為必選
-            //判斷捷運站是否在捷運線底下
+            //驗證region condition
+                //判斷是否有選擇region
+                //判斷是否有選擇kind
+                //判斷各參數是否列在mrt.json跟 region.json裡
+                //如果有選擇鄉鎮section，判斷是否在region底下
+                //如果有選擇捷運線，判斷是否在region底下
+                //如果有選擇捷運線，捷運站為必選
+                //判斷捷運站是否在捷運線底下
+            //驗證base condition
+            //各參數的格式是否正確
         }
 
         private static object GetPropValue(object src, string propName)
