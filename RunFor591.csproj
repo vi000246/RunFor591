@@ -78,6 +78,8 @@
     <Compile Include="DataBase\IDataBase.cs" />
     <Compile Include="Entity\DBType.cs" />
     <Compile Include="Entity\SearchModel.cs" />
+    <Compile Include="LocationEntity\MRTEntity.cs" />
+    <Compile Include="LocationEntity\RegionEntity.cs" />
     <Compile Include="NotifyUtility\INotify.cs" />
     <Compile Include="Setting.cs" />
     <Compile Include="CrawlerUtility\Crawler.cs" />
