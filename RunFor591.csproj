@@ -76,6 +76,7 @@
     <Compile Include="CrawlerUtility\UrlGenerator.cs" />
     <Compile Include="DataBase\DBProvider.cs" />
     <Compile Include="DataBase\IDataBase.cs" />
+    <Compile Include="DataBase\LocationJsonReader.cs" />
     <Compile Include="Entity\DBType.cs" />
     <Compile Include="Entity\SearchModel.cs" />
     <Compile Include="LocationEntity\MRTEntity.cs" />
