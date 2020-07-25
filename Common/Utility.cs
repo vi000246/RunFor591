@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
 using RunFor591.DataBase;
 
 namespace RunFor591.Common
@@ -47,7 +48,7 @@ namespace RunFor591.Common
                     }
                 }
             }
-            throw new ArgumentException("Cannot find name in mrt.json name:"+name);
+            throw new ArgumentException("Cannot find name in MrtRegionId.json name:"+name);
 
             
         }
@@ -61,6 +62,16 @@ namespace RunFor591.Common
 
                 return (T)formatter.Deserialize(ms);
             }
+        }
+
+        public static void WriteMultipleLineLig(string msgTitle,List<string> msgs ,ILog log)
+        {
+            log.Info($"========== {msgTitle} ============");
+            foreach (var msg in msgs)
+            {
+                log.Info(msg);
+            }
+            log.Info("=========================================");
         }
 
     }

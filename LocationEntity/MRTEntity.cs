@@ -16,7 +16,7 @@ namespace RunFor591.LocationEntity
     public class Mrt
     {
         //捷運代號，對應到region  北捷=1 高捷=17 桃捷=6
-        public string mrt { get; set; }
+        public string MrtRegionId { get; set; }
         //捷運名稱
         public string name { get; set; }
         //捷運線 ex.紅線、橘線、文湖線

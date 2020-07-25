@@ -5,9 +5,11 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
+using log4net.Repository.Hierarchy;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
+using RunFor591.Common;
 using RunFor591.CrawlerUtility;
 using RunFor591.Entity;
 
@@ -16,6 +18,7 @@ namespace RunFor591
     public class Crawler
     {
         private RestClient _591client;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public Crawler()
         {
@@ -28,6 +31,7 @@ namespace RunFor591
             var csrfToken = GetCSRFToken();
             var houseList = GetHouseList(csrfToken);
             var matchHouse = FilterHouse(houseList);
+            Utility.WriteMultipleLineLig("New House List", matchHouse.Select(x=>x.title + "url:"+x.houseUrl).ToList(), log);
             var ShouldAlertHouse = SyncDataFromDB();
             //call notify service
         }
@@ -35,6 +39,7 @@ namespace RunFor591
         public IEnumerable<houseEntity> GetHouseList(string csrfToken)
         {
             var urls = new UrlGenerator().GetHouseListApiUrl();
+            Utility.WriteMultipleLineLig("Request urls",urls.ToList(),log);
             IEnumerable<houseEntity> houseList = new List<houseEntity>();
             foreach (var url in urls)
             {

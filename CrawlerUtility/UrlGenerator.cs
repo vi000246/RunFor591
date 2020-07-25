@@ -79,19 +79,23 @@ namespace RunFor591.CrawlerUtility
                                         $"section={String.Join(",", region.section.Select(x => x.id))}";
                         conditionQueryString.Add(sectionQs);
                     }
-
-                        var mrtQs = $"mrt={region.mrt}";
+                    
+                    //如果這縣市有捷運
+                    if (region.mrt != null)
+                    {
+                        var mrtQs = $"MrtRegionId={region.mrt.MrtRegionId}";
                         foreach (var mrtline in region.mrt.mrtline)
                         {
                             var mrtlineQs = $"mrtline={mrtline.sid}";
-                            var mrtStaionQs = regionQs + "&" + kindQs + "&" + mrtQs + "&" + mrtlineQs+ "&" +
+                            var mrtStaionQs = regionQs + "&" + kindQs + "&" + mrtQs + "&" + mrtlineQs + "&" +
                                               $"section={String.Join(",", mrtline.station.Select(x => x.nid))}";
                             conditionQueryString.Add(mrtStaionQs);
                         }
-                        
-                    
-            
-                    if (region.section.Count == 0 && region.mrt.mrtline.Count == 0)
+                    }
+
+
+
+                    if (region.section.Count == 0 && (region.mrt ==null || region.mrt.mrtline.Count == 0))
                     {
                         //組出region的url region + kind
                         conditionQueryString.Add(regionQs+"&"+kindQs);
@@ -151,7 +155,7 @@ namespace RunFor591.CrawlerUtility
                             else
                             {
                                 throw new ArgumentException(
-                                    "Please choose mrt mrtcoods under mrtline in settings.conf.");
+                                    "Please choose MrtRegionId mrtcoods under mrtline in settings.conf.");
                             }
                         }
                     }
