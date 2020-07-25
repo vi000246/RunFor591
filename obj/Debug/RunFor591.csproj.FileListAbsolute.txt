@@ -49,3 +49,5 @@ C:\Users\vi000\source\repos\RunFor591\bin\Debug\LineBotSDK.dll
 C:\Users\vi000\source\repos\RunFor591\bin\Debug\LineNotifySDK.dll
 C:\Users\vi000\source\repos\RunFor591\bin\Debug\LineBotSDK.xml
 C:\Users\vi000\source\repos\RunFor591\bin\Debug\LineNotifySDK.xml
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\RestSharp.dll
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\RestSharp.xml
