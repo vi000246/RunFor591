@@ -23,8 +23,32 @@ namespace UnitTest
 //            var urlResult = generator.GenerateUrlBySearchModel(searchCondition);
 //            Assert.IsTrue(urlResult.Count>1);
         }
+        [TestMethod]
+        //只有選擇捷運站
+        public void OnlyChooseMrtCoods()
+        {
+            var searchCondition = new RegionCondition();
+            searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("鳳山國中"));
+            var generator = new UrlGenerator();
+            var result = generator.ConvertFilterConditionToRegionList(searchCondition);
 
-       
+            Assert.IsTrue(result.Count == 1);
+            Assert.IsTrue(result.First(x => x.txt == "高雄市").mrt.mrtline.First().station.First().name == "鳳山國中");
+        }
+
+        [TestMethod]
+        //只有選擇鄉鎮
+        public void OnlyChooseSection()
+        {
+            var searchCondition = new RegionCondition();
+            searchCondition.Section.Add(Utility.GetLocationIdByName("國姓鄉"));
+            var generator = new UrlGenerator();
+            var result = generator.ConvertFilterConditionToRegionList(searchCondition);
+
+            Assert.IsTrue(result.Count == 1);
+            Assert.IsTrue(result.First(x => x.txt == "南投縣").section.First().name == "國姓鄉");
+        }
+
         [TestMethod]
         //選取多個region(縣市)
         public void SelectMultiRegion_Expect_Success()
@@ -76,18 +100,39 @@ namespace UnitTest
             Assert.IsTrue(result.First(x => x.txt== "南投縣").section.Count == 3);
         }
 
+        [TestMethod]
+        //選取多個鄉鎮
+        public void SelectMultipleSection_Expect_Success()
+        {
+            var searchCondition = new RegionCondition();
+
+            searchCondition.Section.Add(Utility.GetLocationIdByName("旗津區"));
+            searchCondition.Section.Add(Utility.GetLocationIdByName("鳳山區"));
+            searchCondition.Section.Add(Utility.GetLocationIdByName("銅鑼鄉"));
+            searchCondition.Section.Add(Utility.GetLocationIdByName("東勢區"));
+            searchCondition.Section.Add(Utility.GetLocationIdByName("霧峰區"));
+            searchCondition.Section.Add(Utility.GetLocationIdByName("烏日區"));
+            var generator = new UrlGenerator();
+            var result = generator.ConvertFilterConditionToRegionList(searchCondition);
+
+            Assert.IsTrue(result.Count > 0);
+            Assert.IsTrue(result.First(x => x.txt == "高雄市").section.Count == 2);
+            Assert.IsTrue(result.First(x => x.txt == "苗栗縣").section.Count == 1);
+            Assert.IsTrue(result.First(x => x.txt == "台中市").section.Count == 3);
+        }
+
 
         [TestMethod]
         public void SelectRegionAndMrtLineAndMrtCoods_Expect_Success()
         {
             var searchCondition = new RegionCondition();
-            searchCondition.Region.Add(Utility.GetLocationIdByName("高雄市"));
             //紅線底下的捷運站
             searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("高雄國際機場"));
             searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("凱旋"));
             searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("三多商圈"));
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
+            Assert.IsTrue(result.First().txt=="高雄市");
             Assert.IsTrue(result.First().mrt.mrtline.First().station.Count == 3);
         }
 
@@ -101,7 +146,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        //如果鄉鎮不在該縣市底下，略過
+        //如果鄉鎮不在該縣市底下，會選擇該縣市及該鄉鎮
         public void CrossRegionSection_Expect_Success()
         {
             var searchCondition = new RegionCondition();
@@ -110,8 +155,9 @@ namespace UnitTest
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
 
-            Assert.IsTrue(result.Count == 1);
+            Assert.IsTrue(result.Count == 2);
             Assert.IsTrue(result.First(x=>x.txt == "高雄市").section.Count == 0);
+            Assert.IsTrue(result.First(x=>x.txt == "台南市").section.Count == 1);
         }
 
         [TestMethod]
@@ -142,8 +188,9 @@ namespace UnitTest
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
 
-            Assert.IsTrue(result.Count == 1);
-            Assert.IsTrue(result.First().mrt == null);
+            Assert.IsTrue(result.Count == 2);
+            Assert.IsTrue(result.First(x=>x.txt=="台北市").mrt == null);
+            Assert.IsTrue(result.First(x=>x.txt=="高雄市").mrt.mrtline.First().name == "紅線");
         }
 
         [TestMethod]
@@ -165,19 +212,6 @@ namespace UnitTest
             Assert.IsTrue(result.First().mrt.mrtline.First(x=>x.name== "松山新店線").station.Count == 1);
         }
 
-        [TestMethod]
-        //只有選擇捷運站
-        public void OnlyChooseMrtCoods()
-        {
-            var searchCondition = new RegionCondition();
-            searchCondition.Region.Add(Utility.GetLocationIdByName("高雄市"));
-            searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("鳳山國中"));
-            var generator = new UrlGenerator();
-            var result = generator.ConvertFilterConditionToRegionList(searchCondition);
-
-            Assert.IsTrue(result.Count == 1);
-            Assert.IsTrue(result.First(x=>x.txt=="高雄市").mrt.mrtline.First().station.First().name == "鳳山國中");
-        }
 
 
     }

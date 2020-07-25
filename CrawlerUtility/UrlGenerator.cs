@@ -41,7 +41,7 @@ namespace RunFor591.CrawlerUtility
             {
                 var settingValue = GetPropValue(filter.baseCondition,property.Name);
                 if(settingValue != null && !string.IsNullOrEmpty(settingValue.ToString()))
-                    returnParams.Add(String.Format("{0}={1}", property.Name, settingValue));
+                    returnParams.Add(String.Format("{0}={1}", property.Name.ToLower(), settingValue));
             }
             
             //依據地區搜尋條件，組出多組query string
@@ -110,11 +110,10 @@ namespace RunFor591.CrawlerUtility
         {
             //取出region跟mrt對照表
             var locationEntity = LocationJson.GetInstance();
-            if(condition.Region.Count ==0)
-                throw new ArgumentException("Please choose Region in settings.conf");
+            if(condition.Region.Count ==0 && condition.mrtcoods.Count == 0 && condition.Section.Count == 0)
+                throw new ArgumentException("Please choose Region or MrtCoods or Section in settings.conf");
             //取出所選擇的縣市
             var regionList = locationEntity.regionEntity.region
-                .Where(x => condition.Region.Contains(x.id))
                 .ToList()
                 .DeepClone<List<Region>>();
 
@@ -155,11 +154,23 @@ namespace RunFor591.CrawlerUtility
                                 currentRegion.mrt.mrtline.Remove(currentMrtLine);
                             }
                         }
+                        //代表選擇的捷運站不在此捷運底下
+                        if (currentRegion.mrt.mrtline.Count == 0)
+                            currentRegion.mrt = null;
+                    }
+                    else
+                    {
+                        //沒選捷運站 直接拿掉此region的捷運
+                        currentRegion.mrt = null;
                     }
 
-                    if (condition.mrtcoods.Count == 0 || currentRegion.mrt.mrtline.Count == 0)
-                        currentRegion.mrt = null;
+                }
 
+                //如果沒有選擇此region，又沒有選在這region底下的捷運或鄉鎮，就刪掉這個region
+                if (currentRegion.section.Count == 0 && currentRegion.mrt == null &&
+                    !condition.Region.Contains(currentRegion.id))
+                {
+                    regionList.Remove(currentRegion);
                 }
 
 
