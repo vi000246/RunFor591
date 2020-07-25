@@ -1,7 +1,7 @@
 {
   "mrts": [
     {
-      "mrt": "1",
+      "MrtRegionId": "1",
       "name": "taipei_mrt",
       "mrtline": [
         {
@@ -1168,7 +1168,7 @@
     },
     {
       "name": "kaohsiung",
-      "mrt": "17",
+      "MrtRegionId": "17",
       "mrtline": [
         {
           "lat": "22.6313980",
@@ -1569,7 +1569,7 @@
     },
     {
       "name": "taoyuan_mrt",
-      "mrt": "6",
+      "MrtRegionId": "6",
       "mrtline": [
         {
           "lat": "25.0402868",

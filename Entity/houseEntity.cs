@@ -12,6 +12,12 @@ namespace RunFor591.Entity
         public string address { get; set; }
         //門牌號碼
         public string addr_number_name { get; set; }
+        //house url
+        public string houseUrl
+        {
+            get { return $"https://rent.591.com.tw/rent-detail-{this.post_id}.html"; }
+        }
+
         //街道名稱
         public string street_name { get; set; }
         //巷道

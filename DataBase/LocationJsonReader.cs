@@ -29,7 +29,7 @@ namespace RunFor591.DataBase
                 id = x.id,
                 txt = x.txt,
                 section = x.section,
-                mrt = mrtEntity.mrts.FirstOrDefault(m => m.mrt == x.id) //把捷運塞到對應的縣市底下
+                mrt = mrtEntity.mrts.FirstOrDefault(m => m.MrtRegionId == x.id) //把捷運塞到對應的縣市底下
             }).ToList();
         }
 
