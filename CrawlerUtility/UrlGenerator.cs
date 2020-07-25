@@ -17,6 +17,7 @@ namespace RunFor591.CrawlerUtility
     {
         public static string _BaseUrl = "https://rent.591.com.tw/";
         public static string _HouseListUrl = "home/search/rsList";
+        public static string _PhotoListUrl = "home/business/getPhotoList";
 
 
         //依據搜尋條件，產生所有要request的api url

@@ -35,7 +35,7 @@ namespace RunFor591
             var matchHouse = FilterHouse(houseList);
             Helper.WriteMultipleLineLig("New House List", matchHouse.Select(x=>x.title + "url:"+x.houseUrl).ToList(), log);
             var ShouldAlertHouse = GetShouldAlertHouse(matchHouse);
-            PubMessageToNotifiter();
+            PubMessageToNotifiter(ShouldAlertHouse);
         }
 
         public IEnumerable<houseEntity> GetHouseList(string csrfToken)
@@ -52,6 +52,14 @@ namespace RunFor591
             }
             
             return houseList;
+        }
+
+        public PhotoListResponse GetPhotoList(houseEntity house)
+        {
+            var url = $"https://rent.591.com.tw/home/business/getPhotoList?post_id={house.post_id}&type=1";
+            var response = Get591Response(url, Method.GET).Content;
+            var PhotoListResponse = JsonConvert.DeserializeObject<PhotoListResponse>(response);
+            return PhotoListResponse;
         }
 
         public string GetCSRFToken()
@@ -153,10 +161,15 @@ namespace RunFor591
 
         }
 
-        public void PubMessageToNotifiter()
+        public void PubMessageToNotifiter(IEnumerable<houseEntity> houseEntity)
         {
             var notifyService = AutoFacUtility.Container.Resolve<INotify>();
-            notifyService.PubMessage("");
+            foreach (var house in houseEntity)
+            {
+                var photoList = GetPhotoList(house);
+                notifyService.PubMessage("");
+            }
+            
         }
 
         //取出狀態為new的房屋物件
