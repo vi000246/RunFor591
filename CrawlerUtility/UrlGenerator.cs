@@ -137,16 +137,13 @@ namespace RunFor591.CrawlerUtility
                 //如果這縣市有捷運 再做捷運站判斷
                 if (currentRegion.mrt != null)
                 {
-                    if (condition.mrtline.Intersect(currentRegion.mrt.mrtline.Select(x => x.sid)).Any())
+                    if (condition.mrtcoods.Count > 0)
                     {
-                        //刪除沒被選到的捷運線
-                        currentRegion.mrt.mrtline.RemoveAll(x => !condition.mrtline.Contains(x.sid));
-
                         //loop每個捷運線
                         for (int k = currentRegion.mrt.mrtline.Count - 1; k >= 0; k--)
                         {
+                            //如果有選擇此捷運線的捷運站，刪掉其他沒選擇到的捷運站
                             var currentMrtLine = currentRegion.mrt.mrtline[k];
-                            //依照validate規則，有選捷運線就一定要選捷運站
                             if (condition.mrtcoods.Intersect(currentMrtLine.station.Select(x => x.nid)).Any())
                             {
                                 currentMrtLine.station.RemoveAll(x => !condition.mrtcoods.Contains(x.nid));
@@ -154,16 +151,15 @@ namespace RunFor591.CrawlerUtility
                             }
                             else
                             {
-                                throw new ArgumentException(
-                                    "Please choose MrtRegionId mrtcoods under mrtline in settings.conf.");
+                                //刪掉此捷運線
+                                currentRegion.mrt.mrtline.Remove(currentMrtLine);
                             }
                         }
                     }
-                    else
-                    {
-                        //刪除沒被選到的捷運
+
+                    if (condition.mrtcoods.Count == 0 || currentRegion.mrt.mrtline.Count == 0)
                         currentRegion.mrt = null;
-                    }
+
                 }
 
 
