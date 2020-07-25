@@ -36,3 +36,16 @@ C:\Users\vi000\source\repos\RunFor591\obj\Debug\RunFor591.pdb
 C:\Users\vi000\source\repos\RunFor591\bin\Debug\LocationEntity\MRT.json
 C:\Users\vi000\source\repos\RunFor591\bin\Debug\LocationEntity\Region.json
 C:\Users\vi000\source\repos\RunFor591\obj\Debug\RunFor591.csprojAssemblyReference.cache
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\Autofac.dll
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\Autofac.pdb
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\Autofac.xml
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\LineBotSDK.dll
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\LineNotifySDK.dll
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\LineBotSDK.xml
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\LineNotifySDK.xml

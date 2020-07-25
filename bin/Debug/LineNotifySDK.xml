@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LineNotifySDK</name>
+    </assembly>
+    <members>
+        <member name="T:LineNotifySDK.Utility">
+            <summary>
+            可直接使用的Utility
+            </summary>
+        </member>
+        <member name="M:LineNotifySDK.Utility.GenerateHTMLString(System.String,System.String)">
+            <summary>
+            取得可以產生HTML的string
+            </summary>
+            <param name="client_id"></param>
+            <param name="redirect_uri"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LineNotifySDK.Utility.GenerateHTMLStream(System.String,System.String)">
+            <summary>
+            取得可以產生HTML的stream
+            </summary>
+            <param name="client_id"></param>
+            <param name="redirect_uri"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LineNotifySDK.Utility.GetToeknFromCode(System.String,System.String,System.String,System.String)">
+            <summary>
+            使用code取得token
+            </summary>
+            <param name="code"></param>
+            <param name="redirect_uri"></param>
+            <param name="client_id"></param>
+            <param name="client_secret"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LineNotifySDK.Utility.SendNotification(System.String,System.String)">
+            <summary>
+            發送message
+            </summary>
+            <param name="access_token"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LineNotifySDK.Utility.SendNotification(System.String,System.String,System.String,System.String)">
+            <summary>
+            發送message 和 圖片連結
+            </summary>
+            <param name="access_token"></param>
+            <param name="message"></param>
+            <param name="imageThumbnail"></param>
+            <param name="imageFullsize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LineNotifySDK.Utility.SendNotification(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            發送message 與 貼圖
+            </summary>
+            <param name="access_token"></param>
+            <param name="message"></param>
+            <param name="stickerPackageId"></param>
+            <param name="stickerId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LineNotifySDK.Utility.SetNotifyAPIRateLimit(RestSharp.IRestResponse,LineNotifySDK.Struct.SendNotificationResponse@)">
+            <summary>
+            來設定NotifyAPIRateLimit
+            </summary>
+            <param name="response"></param>
+            <param name="obj"></param>
+        </member>
+        <member name="M:LineNotifySDK.Utility.GetStatus(System.String)">
+            <summary>
+            取得token狀態
+            </summary>
+            <param name="access_token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LineNotifySDK.Utility.RevokeToken(System.String)">
+            <summary>
+            註銷token
+            </summary>
+            <param name="access_token"></param>
+            <returns></returns>
+        </member>
+        <member name="P:LineNotifySDK.Struct.NotifyAPIRateLimit.X_RateLimit_Limit">
+            <summary>
+            The limit of API calls per hour
+            </summary>
+        </member>
+        <member name="P:LineNotifySDK.Struct.NotifyAPIRateLimit.X_RateLimit_Remaining">
+            <summary>
+            The number of possible remaining API calls
+            </summary>
+        </member>
+        <member name="P:LineNotifySDK.Struct.NotifyAPIRateLimit.X_RateLimit_ImageLimit">
+            <summary>
+            The limit of Uploading image per hour
+            </summary>
+        </member>
+        <member name="P:LineNotifySDK.Struct.NotifyAPIRateLimit.X_RateLimit_ImageRemaining">
+            <summary>
+            The number of possible remaining Uploading image
+            </summary>
+        </member>
+        <member name="P:LineNotifySDK.Struct.NotifyAPIRateLimit.X_RateLimit_Reset">
+            <summary>
+            The time when the limit is reset (UTC epoch seconds)
+            </summary>
+        </member>
+        <member name="P:LineNotifySDK.Struct.GetStatusResponse.targetType">
+             <summary>
+             If the notification target is a user: "USER"
+            If the notification target is a group: "GROUP"
+             </summary>
+        </member>
+        <member name="P:LineNotifySDK.Struct.GetStatusResponse.target">
+            <summary>
+            If the notification target is a user, displays user name. If acquisition fails, displays "null."
+            If the notification target is a group, displays group name.If the target user has already left the group, displays "null."
+            </summary>
+        </member>
+    </members>
+</doc>

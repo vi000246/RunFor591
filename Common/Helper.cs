@@ -10,7 +10,7 @@ using RunFor591.DataBase;
 
 namespace RunFor591.Common
 {
-    public static class Utility
+    public static class Helper
     {
         //依據名稱，取得region或section的id
         public static string GetLocationIdByName(string name)
