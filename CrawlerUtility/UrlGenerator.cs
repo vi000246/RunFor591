@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using JsonConfig;
+using RunFor591.Common;
 using RunFor591.DataBase;
 using RunFor591.Entity;
 using RunFor591.LocationEntity;
@@ -108,7 +109,11 @@ namespace RunFor591.CrawlerUtility
             if(condition.Region.Count ==0)
                 throw new ArgumentException("Please choose Region in settings.conf");
             //取出所選擇的縣市
-            var regionList = locationEntity.regionEntity.region.Where(x => condition.Region.Contains(x.id)).ToList();
+            var regionList = locationEntity.regionEntity.region
+                .Where(x => condition.Region.Contains(x.id))
+                .ToList()
+                .DeepClone<List<Region>>();
+
 
             for (int i = regionList.Count -1;i>=0;i--)
             {

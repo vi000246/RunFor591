@@ -13,8 +13,8 @@ namespace RunFor591.DataBase
     {
         private static readonly object thisLock = new object();
         //此物件包含縣市、鄉鎮、捷運
-        public RegionEntity regionEntity { get; set; }
-        public MRTEntity mrtEntity { get; set; }
+        public RegionEntity regionEntity { get;  }
+        public MRTEntity mrtEntity { get;  }
         // 將唯一實例設為 private static
         private static LocationJson instance;
 

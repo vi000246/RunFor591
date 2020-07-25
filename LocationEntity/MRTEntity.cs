@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace RunFor591.LocationEntity
 {
+    [Serializable]
     public class MRTEntity
     {
         public List<Mrt> mrts { get; set; }
 
     }
+    [Serializable]
     public class Mrt
     {
         //捷運代號，對應到region  北捷=1 高捷=17 桃捷=6
@@ -21,6 +23,7 @@ namespace RunFor591.LocationEntity
         public List<Mrtline> mrtline { get; set; }
 
     }
+    [Serializable]
     public class Mrtline
     {
         public string lat { get; set; }
@@ -35,7 +38,7 @@ namespace RunFor591.LocationEntity
         public List<Station> station { get; set; }
 
     }
-
+    [Serializable]
     public class Station
     {
         //不知有何作用
