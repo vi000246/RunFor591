@@ -15,7 +15,20 @@ RunFor591.exe /u or RunFor591.exe /uninstall
 如果要用console application執行  
 需要到專案屬性頁將output type選成console application  
 
----------
+---------  
+Line Notify設定方法:  
+參考保哥這篇 上手 LINE Notify 不求人：一行代碼都不用寫的推播通知方法  
+https://blog.miniasp.com/post/2020/02/17/Go-Through-LINE-Notify-Without-Any-Code  
+1.先在本地架好callback url用的伺服器，連接到同意授權頁面，按下同意後，會向callback url發出post請求  
+2.這時call back url的伺服器接受的post請求會有code參數  
+3.將拿到的code參數，跟註冊的client id、client secret向 https://notify-bot.line.me/oauth/token 發出post請求  
+4.就能拿到access token了  
+
+呼叫notify api的方式:  
+參考Notification這段  
+https://notify-bot.line.me/doc/en/  
+
+---------  
 591 api analyze:  
 捷運列表  
 https://s.591.com.tw/build/widget/config/_subway.js?v=a6d45d1200  
