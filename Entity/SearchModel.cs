@@ -16,11 +16,11 @@ namespace RunFor591.Entity
 
     public class RegionCondition
     {
-        public List<string> kind { get; set; }
-        public List<string> Region { get; set; }
-        public List<string> Section { get; set; }
-        public List<string> mrtline { get; set; }
-        public List<string> mrtcoods { get; set; }
+        public List<string> kind { get; set; } = new List<string>();
+        public List<string> Region { get; set; } = new List<string>();
+        public List<string> Section { get; set; } = new List<string>();
+        public List<string> mrtline { get; set; } = new List<string>();
+        public List<string> mrtcoods { get; set; } = new List<string>();
     }
 
     public class BaseCondition

@@ -35,4 +35,3 @@ C:\Users\vi000\source\repos\RunFor591\obj\Debug\RunFor591.exe
 C:\Users\vi000\source\repos\RunFor591\obj\Debug\RunFor591.pdb
 C:\Users\vi000\source\repos\RunFor591\bin\Debug\LocationEntity\MRT.json
 C:\Users\vi000\source\repos\RunFor591\bin\Debug\LocationEntity\Region.json
-C:\Users\vi000\source\repos\RunFor591\obj\Debug\RunFor591.csprojAssemblyReference.cache

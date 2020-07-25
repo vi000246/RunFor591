@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Utility.cs" />
     <Compile Include="CrawlerUtility\UrlGenerator.cs" />
     <Compile Include="DataBase\DBProvider.cs" />
     <Compile Include="DataBase\IDataBase.cs" />
