@@ -19,7 +19,6 @@ namespace RunFor591.Entity
         public List<string> kind { get; set; } = new List<string>();
         public List<string> Region { get; set; } = new List<string>();
         public List<string> Section { get; set; } = new List<string>();
-        public List<string> mrtline { get; set; } = new List<string>();
         public List<string> mrtcoods { get; set; } = new List<string>();
     }
 

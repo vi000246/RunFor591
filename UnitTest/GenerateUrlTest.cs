@@ -78,24 +78,10 @@ namespace UnitTest
 
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        //有選捷運線，沒有選擇捷運站
-        public void SelectRegionAndMrtLine_Expect_Exception()
-        {
-            var searchCondition = new RegionCondition();
-            searchCondition.Region.Add(Utility.GetLocationIdByName("高雄市"));
-            searchCondition.mrtline.Add(Utility.GetMrtIdByName("紅線"));
-            var generator = new UrlGenerator();
-            var result = generator.ConvertFilterConditionToRegionList(searchCondition);
-
-        }
-
-        [TestMethod]
         public void SelectRegionAndMrtLineAndMrtCoods_Expect_Success()
         {
             var searchCondition = new RegionCondition();
             searchCondition.Region.Add(Utility.GetLocationIdByName("高雄市"));
-            searchCondition.mrtline.Add(Utility.GetMrtIdByName("紅線"));
             //紅線底下的捷運站
             searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("高雄國際機場"));
             searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("凱旋"));
@@ -151,7 +137,6 @@ namespace UnitTest
         {
             var searchCondition = new RegionCondition();
             searchCondition.Region.Add(Utility.GetLocationIdByName("台北市"));
-            searchCondition.mrtline.Add(Utility.GetMrtIdByName("紅線"));
             searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("凱旋"));
             searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("三多商圈"));
             var generator = new UrlGenerator();
@@ -168,8 +153,6 @@ namespace UnitTest
             var searchCondition = new RegionCondition();
             //台北市
             searchCondition.Region.Add(Utility.GetLocationIdByName("台北市"));
-            searchCondition.mrtline.Add(Utility.GetMrtIdByName("文湖線"));
-            searchCondition.mrtline.Add(Utility.GetMrtIdByName("松山新店線"));
             searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("南港展覽館"));
             searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("大湖公園"));
             searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("台北小巨蛋"));
@@ -183,7 +166,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        //只有選擇捷運站 沒選捷運線，會略過這個捷運站
+        //只有選擇捷運站
         public void OnlyChooseMrtCoods()
         {
             var searchCondition = new RegionCondition();
@@ -193,7 +176,7 @@ namespace UnitTest
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
 
             Assert.IsTrue(result.Count == 1);
-            Assert.IsTrue(result.First(x=>x.txt=="高雄市").mrt == null);
+            Assert.IsTrue(result.First(x=>x.txt=="高雄市").mrt.mrtline.First().station.First().name == "鳳山國中");
         }
 
 
