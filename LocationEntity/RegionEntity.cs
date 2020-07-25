@@ -24,7 +24,7 @@ namespace RunFor591.LocationEntity
         public string txt { get; set; }
         //鄉鎮
         public List<Section> section { get; set; }
-        public List<Mrt> mrts { get; set; }
+        public Mrt mrt { get; set; }//每個縣市只有一個捷運公司(目前只有北捷，高捷，桃捷)
 
     }
 }

@@ -14,21 +14,22 @@ namespace RunFor591.DataBase
         private static readonly object thisLock = new object();
         //此物件包含縣市、鄉鎮、捷運
         public RegionEntity regionEntity { get; set; }
+        public MRTEntity mrtEntity { get; set; }
         // 將唯一實例設為 private static
         private static LocationJson instance;
 
 
         private LocationJson()
         {
-            var mrts = GetMRTList();
+            mrtEntity = GetMRTList();
             regionEntity = GetRegionEntity();
-            //把捷運塞到對應的縣市底下
+            
             regionEntity.region = regionEntity.region.Select(x => new
             Region{
                 id = x.id,
                 txt = x.txt,
                 section = x.section,
-                mrts = mrts.mrts.Where(m => m.mrt == x.id).ToList()
+                mrt = mrtEntity.mrts.FirstOrDefault(m => m.mrt == x.id) //把捷運塞到對應的縣市底下
             }).ToList();
         }
 
