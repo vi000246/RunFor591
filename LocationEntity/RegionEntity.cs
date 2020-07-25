@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace RunFor591.LocationEntity
 {
+    [Serializable]
     public class RegionEntity
     {
         //縣市
         public List<Region> region { get; set; }
     }
+    [Serializable]
     public class Section
     {
         public string id { get; set; }
@@ -18,6 +20,7 @@ namespace RunFor591.LocationEntity
 
     }
 
+    [Serializable]
     public class Region
     {
         public string id { get; set; }
