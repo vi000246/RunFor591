@@ -27,21 +27,24 @@ namespace RunFor591
         {
             var csrfToken = GetCSRFToken();
             var houseList = GetHouseList(csrfToken);
-            var matchHouse = FilterHouse();
+            var matchHouse = FilterHouse(houseList);
             var ShouldAlertHouse = SyncDataFromDB();
             //call notify service
         }
 
-        public string GetHouseList(string csrfToken)
+        public IEnumerable<houseEntity> GetHouseList(string csrfToken)
         {
             var urls = new UrlGenerator().GetHouseListApiUrl();
+            IEnumerable<houseEntity> houseList = new List<houseEntity>();
             foreach (var url in urls)
             {
                 var response = Get591Response(url, Method.POST,csrfToken).Content;
                 var houseResponse = JsonConvert.DeserializeObject<ResponseHouseEntity>(response);
+                var entity = Convert591DataToEntity(houseResponse.data.data);
+                houseList = houseList.Concat(entity);
             }
             
-            return "";
+            return houseList;
         }
 
         public string GetCSRFToken()
@@ -99,9 +102,35 @@ namespace RunFor591
             return response.Content;
         }
 
-        public void ConvertRawDataToObj()
+        public IEnumerable<houseEntity> Convert591DataToEntity(IEnumerable<Datum> objlist)
         {
+            var entityList = new List<houseEntity>();
+            foreach (var obj in objlist)
+            {
+                var entity = new houseEntity();
+                entity.address = obj.address+" :"+obj.regionname+obj.sectionname+obj.street_name+obj.alley_name + obj.addr_number_name;
+                entity.title = obj.address_img;
+                entity.floorInfo = obj.floorInfo;
+                entity.isNew = obj.new_img.Length > 0;
+                entity.coverUrl = obj.cover;
+                entity.album = obj.house_img.Split(',').ToList();//有個問題，可能會有空的array item
+                entity.post_id = obj.post_id;
+                entity.price = obj.price;
+                entity.regionName = obj.regionname;
+                entity.updateTime = DateTimeOffset.FromUnixTimeSeconds(obj.updatetime).UtcDateTime;
+                entity.refreshTime = DateTimeOffset.FromUnixTimeSeconds(obj.refreshtime).UtcDateTime;
+                entity.sectionname = obj.sectionname;
+                entity.addr_number_name = obj.addr_number_name;
+                entity.alley_name = obj.alley_name;
+                entity.street_name = obj.street_name;
+                entity.kind_name = obj.kind_name;
 
+
+                entityList.Add(entity);
+            }
+            
+
+            return entityList;
         }
 
         public string SyncDataFromDB()
@@ -109,9 +138,10 @@ namespace RunFor591
             return "";
         }
 
-        public string FilterHouse()
+        //取出狀態為new的房屋物件
+        public IEnumerable<houseEntity> FilterHouse(IEnumerable<houseEntity> houseList)
         {
-            return "";
+            return houseList.Where(x=> x.isNew);
         }
     }
 }

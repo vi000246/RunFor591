@@ -24,3 +24,15 @@ F:\Projects\Github\RunFor591\RunFor591\bin\Debug\Newtonsoft.Json.xml
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\HtmlAgilityPack.dll
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\HtmlAgilityPack.pdb
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\HtmlAgilityPack.xml
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\settings.conf
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\log4net.config
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\RunFor591.exe.config
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\RunFor591.exe
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\RunFor591.pdb
+C:\Users\vi000\source\repos\RunFor591\obj\Debug\RunFor591.csproj.CoreCompileInputs.cache
+C:\Users\vi000\source\repos\RunFor591\obj\Debug\RunFor591.csproj.CopyComplete
+C:\Users\vi000\source\repos\RunFor591\obj\Debug\RunFor591.exe
+C:\Users\vi000\source\repos\RunFor591\obj\Debug\RunFor591.pdb
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\LocationEntity\MRT.json
+C:\Users\vi000\source\repos\RunFor591\bin\Debug\LocationEntity\Region.json
+C:\Users\vi000\source\repos\RunFor591\obj\Debug\RunFor591.csprojAssemblyReference.cache

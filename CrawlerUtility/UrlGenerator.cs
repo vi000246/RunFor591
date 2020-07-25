@@ -4,8 +4,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using JsonConfig;
+using RunFor591.DataBase;
 using RunFor591.Entity;
+using RunFor591.LocationEntity;
 
 namespace RunFor591.CrawlerUtility
 {
@@ -14,12 +17,6 @@ namespace RunFor591.CrawlerUtility
         public static string _BaseUrl = "https://rent.591.com.tw/";
         public static string _HouseListUrl = "home/search/rsList";
 
-        //591列表頁面 用來取得csrf token跟cookie
-        public string GetEntryUrl()
-        {
-            //用firstOrDefault 反正只是用來取得token跟cookie
-            return UrlGenerator._BaseUrl + QueryStringBuilder().ToList().FirstOrDefault();
-        }
 
         //依據搜尋條件，產生所有要request的api url
         public IEnumerable<string> GetHouseListApiUrl()
@@ -52,41 +49,53 @@ namespace RunFor591.CrawlerUtility
             var baseConditionQueryString = String.Join("&", returnParams.ToArray());
             foreach (var query in querys)
             {
-                yield return "?" + query + baseConditionQueryString;
+                yield return "?" + query +"&"+ baseConditionQueryString;
             }
             
         }
 
         //如果該region底下沒東西，也要組出url  
         //如果有選捷運，依據捷運線所屬哪個捷運，組出mrt參數(對應到region 桃捷=6 北捷=1 高雄捷運=17)
-        private List<string> GenerateUrlBySearchModel(RegionCondition condition)
+        public List<string> GenerateUrlBySearchModel(RegionCondition regionCondition)
         {
             var conditionQueryString = new List<string>();
-            //取出region跟mrt對照表
-            //依據region，groupy by底下的捷運線跟鄉鎮
+            
+            
+            //依據region，將搜尋條件group by
+            var conditionList = ConvertFilterConditionToRegionList(regionCondition);
 
             //loop每個縣市
-            foreach (var region in condition.Region)
+            foreach (var region in conditionList)
             {
+                var regionQs = $"region={region.id}";
                 //loop每個租屋類型
-                foreach (var kind in condition.kind)
+                foreach (var kind in regionCondition.kind)
                 {
-                    foreach (var section in condition.Section)
+                    var kindQs = $"kind={kind}";
+                    if (region.section.Any())
                     {
-                       //region + kind + section 
+                        var sectionQs = regionQs + "&" + kindQs + "&"+
+                                        $"section={String.Join(",", region.section.Select(x => x.id))}";
+                        conditionQueryString.Add(sectionQs);
                     }
 
-                    foreach (var matline in condition.mrtline)
+                    foreach (var mrt in region.mrts)
                     {
-                        foreach (var mrtStation in condition.mrtcoods)
+                        var mrtQs = $"mrt={mrt.mrt}";
+                        foreach (var mrtline in mrt.mrtline)
                         {
-                            //region + kind + marline + mrtStation
+                            var mrtlineQs = $"mrtline={mrtline.sid}";
+                            var mrtStaionQs = regionQs + "&" + kindQs + "&" + mrtQs + "&" + mrtlineQs+ "&" +
+                                              $"section={String.Join(",", mrtline.station.Select(x => x.nid))}";
+                            conditionQueryString.Add(mrtStaionQs);
                         }
+                        
                     }
-
-                    if (condition.Section.Count == 0 && condition.mrtline.Count == 0)
+            
+                    if (region.section.Count == 0 && region.mrts.Count == 0)
                     {
                         //組出region的url region + kind
+                        conditionQueryString.Add(regionQs+"&"+kindQs);
                     }
                 }
             }
@@ -94,7 +103,67 @@ namespace RunFor591.CrawlerUtility
             return conditionQueryString;
         }
 
-        private void ValidateFilterCondition(SearchModel filter)
+        public List<Region> ConvertFilterConditionToRegionList(RegionCondition condition)
+        {
+            //取出region跟mrt對照表
+            var locationEntity = LocationJson.GetInstance();
+            if(condition.Region.Count ==0)
+                throw new ArgumentException("Please choose Region in settings.conf");
+            //取出所選擇的縣市
+            var regionList = locationEntity.regionEntity.region.Where(x => condition.Region.Contains(x.id)).ToList();
+
+            for (int i = regionList.Count -1;i>=0;i--)
+            {
+                var currentRegion = regionList[i];
+                //如果搜尋條件有指定此縣市底下的鄉鎮
+                if (condition.Section.Intersect(currentRegion.section.Select(x => x.id)).Any())
+                {
+                    //移除其他沒被指定到的鄉鎮
+                    currentRegion.section.RemoveAll(x => !condition.Section.Contains(x.id));
+                }
+                else
+                {
+                    //如果沒指定代表全選，刪掉所有鄉鎮，這樣才不會loop到
+                    currentRegion.section.Clear();
+                }
+                
+                //loop每個捷運 北捷 高捷 桃捷
+                for (int j = currentRegion.mrts.Count-1 ;j>=0;j--)
+                {
+                    var currentMrt = currentRegion.mrts[j];
+                    if (condition.mrtline.Intersect(currentMrt.mrtline.Select(x => x.sid)).Any())
+                    {
+                        //刪除沒被選到的捷運線
+                        currentMrt.mrtline.RemoveAll(x => !condition.mrtline.Contains(x.sid));
+
+                        //loop每個捷運線
+                        for (int k = currentMrt.mrtline.Count - 1; k >= 0; k--)
+                        {
+                            var currentMrtLine = currentMrt.mrtline[k];
+                            //依照validate規則，有選捷運線就一定要選捷運站
+                            if (condition.mrtcoods.Intersect(currentMrtLine.station.Select(x => x.nid)).Any())
+                            {
+                                currentMrtLine.station.RemoveAll(x => !condition.mrtcoods.Contains(x.nid));
+
+                            }
+                            else
+                            {
+                                throw new ArgumentException("Please choose mrt mrtcoods under mrtline in settings.conf.");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //刪除沒被選到的捷運
+                        currentRegion.mrts.RemoveAt(j);
+                    }
+                }
+
+            }
+            return regionList;
+        }
+
+        public void ValidateFilterCondition(SearchModel filter)
         {
             //驗證region condition
                 //判斷是否有選擇region

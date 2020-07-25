@@ -78,6 +78,7 @@
     <Compile Include="DataBase\IDataBase.cs" />
     <Compile Include="DataBase\LocationJsonReader.cs" />
     <Compile Include="Entity\DBType.cs" />
+    <Compile Include="Entity\houseEntity.cs" />
     <Compile Include="Entity\SearchModel.cs" />
     <Compile Include="LocationEntity\MRTEntity.cs" />
     <Compile Include="LocationEntity\RegionEntity.cs" />
@@ -96,8 +97,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="LocationEntity\MRT.json" />
-    <None Include="LocationEntity\Region.json" />
+    <None Include="LocationEntity\MRT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="LocationEntity\Region.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="settings.conf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
