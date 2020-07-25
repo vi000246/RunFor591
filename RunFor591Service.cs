@@ -16,25 +16,20 @@ namespace RunFor591
 
         public void Start(string[] args)
         {
+            new Crawler().StartCrawl591();
             var MyTimer = new Timer();
-            MyTimer.Elapsed += new ElapsedEventHandler(MyTimer_Elapsed);
+            MyTimer.Elapsed += new ElapsedEventHandler(StartCrawler);
             var interval = Setting.GetTimerInterval();
             MyTimer.Interval = interval * 1000;
             MyTimer.Start();
         }
-        private void MyTimer_Elapsed(object sender, ElapsedEventArgs e)
+        private void StartCrawler(object sender, ElapsedEventArgs e)
 
         {
-            AppContext.Log("service run.");
-            TestMethod();
-            log.Debug("Application Excute");
-        }
-
-        private void TestMethod()
-        {
-            // var a = Setting.GetFilterCondition();
             new Crawler().StartCrawl591();
+            log.Debug("crawler excute");
         }
+
 
         public void Stop()
         {

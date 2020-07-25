@@ -20,10 +20,11 @@ namespace RunFor591.LocationEntity
 
     public class Region
     {
-        public int id { get; set; }
+        public string id { get; set; }
         public string txt { get; set; }
         //鄉鎮
         public List<Section> section { get; set; }
+        public List<Mrt> mrts { get; set; }
 
     }
 }
