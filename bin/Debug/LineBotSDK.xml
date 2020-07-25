@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LineBotSDK</name>
+    </assembly>
+    <members>
+        <member name="M:LineBotSDK.LIFF.LiffControl.#ctor(System.String)">
+            <summary>
+            Constructer
+            </summary>
+            <param name="aChannelAccessToken">Authorization</param>
+        </member>
+        <member name="M:LineBotSDK.LIFF.LiffControl.AddingLIFFApp(LineBotSDK.LIFF.Struct.SizeOfLIFF,System.String)">
+            <summary>
+            Adds an app to LIFF
+            </summary>
+            <param name="aSizeOfLIFF">Size of the LIFF app view</param>
+            <param name="aUrl">URL of the LIFF app</param>
+            <returns></returns>
+        </member>
+        <member name="M:LineBotSDK.LIFF.LiffControl.UpdateLIFFApp(System.String,LineBotSDK.LIFF.Struct.SizeOfLIFF,System.String)">
+            <summary>
+            Updates LIFF app settings.
+            </summary>
+            <param name="aLiffId">ID of the LIFF app to be updated</param>
+            <param name="aSizeOfLIFF"> Size of the LIFF app view to be updated</param>
+            <param name="aUrl">URL of the LIFF app to be updated.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LineBotSDK.LIFF.LiffControl.GetAllLIFFApps">
+            <summary>
+            Gets information on all the LIFF apps registered in the channel.
+            </summary>
+            <returns>Array of LIFF app objects</returns>
+        </member>
+        <member name="M:LineBotSDK.LIFF.LiffControl.DeleteLIFFApp(System.String)">
+            <summary>
+            Deletes a LIFF app.
+            </summary>
+            <param name="aLiffId">ID of the LIFF app to be deleted</param>
+            <returns></returns>
+        </member>
+        <member name="M:LineBotSDK.LIFF.LiffControl.DeleteAllLIFFApps">
+            <summary>
+            Deletes all LIFF appss.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LineBotSDK.RichMenuSDK.Struct.Area.#ctor(LineBotSDK.RichMenuSDK.Struct.Bounds,LineBotSDK.RichMenuSDK.Struct.IAction)">
+            <summary>
+            Area建構式
+            </summary>
+            <param name="bounds"></param>
+            <param name="action">目前有 UrlAction, MessageAction, PostbackAction</param>
+        </member>
+        <member name="T:LineBotSDK.Struct.Messages.IImagemapAction">
+            <summary>
+            IImagemapAction
+            </summary>
+        </member>
+        <member name="T:LineBotSDK.Struct.Messages.ImagemapArea">
+            <summary>
+            ImagemapArea
+            </summary>
+        </member>
+        <member name="T:LineBotSDK.Struct.Messages.LocationMessage">
+            <summary>
+            LocationMessage
+            </summary>
+        </member>
+        <member name="T:LineBotSDK.Struct.Messages.TextMessage">
+            <summary>
+            TextMessage
+            </summary>
+        </member>
+        <member name="M:LineBotSDK.Utility.MessageUtility.PushTextMessage(System.String,System.String,System.String)">
+            <summary>
+            Send the text message to user
+            </summary>
+            <param name="aChannelAccessToken">Line bot token</param>
+            <param name="aUserID">user id</param>
+            <param name="aMessage">Message text Max: 2000 characters</param>
+        </member>
+        <member name="M:LineBotSDK.Utility.MessageUtility.PushImageMessage(System.String,System.String,System.String,System.String)">
+            <summary>
+            Send the image message to user
+            </summary>
+            <param name="aChannelAccessToken">Line bot token</param>
+            <param name="aUserID">user id</param>
+            <param name="originalContentUrl"> Image URL</param>
+            <param name="previewImageUrl">Preview image</param>
+        </member>
+        <member name="M:LineBotSDK.Utility.MessageUtility.PushVideoMessage(System.String,System.String,System.String,System.String)">
+            <summary>
+            Send the video message to user
+            </summary>
+            <param name="aChannelAccessToken">Line bot token</param>
+            <param name="aUserID">user id</param>
+            <param name="originalContentUrl">URL of video file </param>
+            <param name="previewImageUrl">URL of preview image</param>
+        </member>
+        <member name="M:LineBotSDK.Utility.MessageUtility.PushStickerMessage(System.String,System.String,System.String,System.String)">
+            <summary>
+            Send the sticker message to user
+            </summary>
+            <param name="aChannelAccessToken">Line bot token</param>
+            <param name="aUserID">user id</param>
+            <param name="packageId">Package ID for a set of stickers. </param>
+            <param name="stickerId">Sticker ID</param>
+        </member>
+        <member name="M:LineBotSDK.Utility.MessageUtility.PushAudioMessage(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Send the audio message to user
+            </summary>
+            <param name="aChannelAccessToken">Line bot token</param>
+            <param name="aUserID">user id</param>
+            <param name="originalContentUrl">URL of audio file</param>
+            <param name="duration">Length of audio file </param>
+        </member>
+        <member name="M:LineBotSDK.Utility.MessageUtility.PushLocationMessage(System.String,System.String,System.String,System.String,System.Decimal,System.Decimal)">
+            <summary>
+            Send the location message to user
+            </summary>
+            <param name="aChannelAccessToken">Line bot token</param>
+            <param name="aUserID">user id</param>
+            <param name="title">Title</param>
+            <param name="address">Address</param>
+            <param name="latitude">Latitude</param>
+            <param name="longitude">Longitude</param>
+        </member>
+        <member name="M:LineBotSDK.Utility.MessageUtility.PushImagemapMessage(System.String,System.String,System.String,System.String,LineBotSDK.Struct.Size,System.Collections.Generic.List{LineBotSDK.Struct.Messages.IImagemapAction})">
+            <summary>
+            Send the Imagemap message to user
+            </summary>
+            <param name="aChannelAccessToken">Line bot token</param>
+            <param name="aUserID">user id</param>
+            <param name="baseUrl">Base URL of image </param>
+            <param name="altText">Alternative text</param>
+            <param name="baseSize">SIZE of base image</param>
+            <param name="actions">Action when tapped</param>
+        </member>
+    </members>
+</doc>

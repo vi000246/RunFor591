@@ -37,6 +37,11 @@ namespace RunFor591
             return Config.User.JsonHostingUrlPath;
         }
 
+        public static LineToken GetLineToken()
+        {
+            return CastSettingToClass<LineToken>("LineToken");
+        }
+
         //取得要通知的line的key
         public static string GetLineApiKey()
         {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using RunFor591.Common;
 using RunFor591.CrawlerUtility;
 using SimpleServices;
 
@@ -16,6 +17,8 @@ namespace RunFor591
 
         public void Start(string[] args)
         {
+            //註冊IOC
+            AutoFacUtility.Run();
             new Crawler().StartCrawl591();
             var MyTimer = new Timer();
             MyTimer.Elapsed += new ElapsedEventHandler(StartCrawler);

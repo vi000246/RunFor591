@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac;
 using HtmlAgilityPack;
 using log4net.Repository.Hierarchy;
 using Newtonsoft.Json;
@@ -12,6 +13,7 @@ using RestSharp.Authenticators;
 using RunFor591.Common;
 using RunFor591.CrawlerUtility;
 using RunFor591.Entity;
+using RunFor591.NotifyUtility;
 
 namespace RunFor591
 {
@@ -31,15 +33,15 @@ namespace RunFor591
             var csrfToken = GetCSRFToken();
             var houseList = GetHouseList(csrfToken);
             var matchHouse = FilterHouse(houseList);
-            Utility.WriteMultipleLineLig("New House List", matchHouse.Select(x=>x.title + "url:"+x.houseUrl).ToList(), log);
-            var ShouldAlertHouse = SyncDataFromDB();
-            //call notify service
+            Helper.WriteMultipleLineLig("New House List", matchHouse.Select(x=>x.title + "url:"+x.houseUrl).ToList(), log);
+            var ShouldAlertHouse = GetShouldAlertHouse(matchHouse);
+            PubMessageToNotifiter();
         }
 
         public IEnumerable<houseEntity> GetHouseList(string csrfToken)
         {
             var urls = new UrlGenerator().GetHouseListApiUrl();
-            Utility.WriteMultipleLineLig("Request urls",urls.ToList(),log);
+            Helper.WriteMultipleLineLig("Request urls",urls.ToList(),log);
             IEnumerable<houseEntity> houseList = new List<houseEntity>();
             foreach (var url in urls)
             {
@@ -95,17 +97,17 @@ namespace RunFor591
             return tokenValue;
         }
 
-        //不知道是公司封鎖 還是我的問題 先留起來備用
-        public string GetJsonBinExample()
-        {
-            var client = new RestClient("https://api.jsonbin.io/b/5f19128591806166284734fc");
-            var request = new RestRequest();
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;
-            request.Method = Method.GET;
-            request.AddHeader("secret-key", "$2b$10$nH0piEsV0NDZi1jWWc185emNZ2.5sohh0iNhR5yuHqfK5vi051tCu");
-            var response = client.Get(request);
-            return response.Content;
-        }
+        //公司不能用json bin...
+//        public string GetJsonBinExample()
+//        {
+//            var client = new RestClient("https://api.jsonbin.io/b/5f19128591806166284734fc");
+//            var request = new RestRequest();
+//            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;
+//            request.Method = Method.GET;
+//            request.AddHeader("secret-key", "$2b$10$nH0piEsV0NDZi1jWWc185emNZ2.5sohh0iNhR5yuHqfK5vi051tCu");
+//            var response = client.Get(request);
+//            return response.Content;
+//        }
 
         public IEnumerable<houseEntity> Convert591DataToEntity(IEnumerable<Datum> objlist)
         {
@@ -138,9 +140,23 @@ namespace RunFor591
             return entityList;
         }
 
-        public string SyncDataFromDB()
+        //取得尚未發送過通知的房屋列表
+        public IEnumerable<houseEntity> GetShouldAlertHouse(IEnumerable<houseEntity> houseList)
         {
-            return "";
+            
+            return houseList;
+        }
+
+        //將已發送過通知的房屋儲存至db
+        public void StoreDataToDb(IEnumerable<houseEntity> houseList)
+        {
+
+        }
+
+        public void PubMessageToNotifiter()
+        {
+            var notifyService = AutoFacUtility.Container.Resolve<INotify>();
+            notifyService.PubMessage("");
         }
 
         //取出狀態為new的房屋物件

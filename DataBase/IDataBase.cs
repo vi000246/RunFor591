@@ -12,7 +12,7 @@ namespace RunFor591
         void GetDataByDate(DateTime date);
 
         //如果日期不存在，create一個key
-        void CreateData();
+        void CreateDataByDate();
 
         //如果物件不存在，在該日期新增一個houseId
         void InsertHouseData();

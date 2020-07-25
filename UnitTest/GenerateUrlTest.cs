@@ -15,7 +15,7 @@ namespace UnitTest
         public void OnlySelectRegion_Expect_Success()
         {
             var searchCondition = new RegionCondition();
-            searchCondition.Region.Add(Utility.GetLocationIdByName("台北市")); 
+            searchCondition.Region.Add(Helper.GetLocationIdByName("台北市")); 
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
             Assert.IsTrue(result.First().txt== "台北市");
@@ -28,7 +28,7 @@ namespace UnitTest
         public void OnlyChooseMrtCoods()
         {
             var searchCondition = new RegionCondition();
-            searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("鳳山國中"));
+            searchCondition.mrtcoods.Add(Helper.GetMrtIdByName("鳳山國中"));
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
 
@@ -41,7 +41,7 @@ namespace UnitTest
         public void OnlyChooseSection()
         {
             var searchCondition = new RegionCondition();
-            searchCondition.Section.Add(Utility.GetLocationIdByName("國姓鄉"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("國姓鄉"));
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
 
@@ -55,8 +55,8 @@ namespace UnitTest
         {
             var searchCondition = new RegionCondition();
            
-            searchCondition.Region.Add(Utility.GetLocationIdByName("台北市"));
-            searchCondition.Region.Add(Utility.GetLocationIdByName("新北市"));
+            searchCondition.Region.Add(Helper.GetLocationIdByName("台北市"));
+            searchCondition.Region.Add(Helper.GetLocationIdByName("新北市"));
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
             Assert.IsTrue(result.Count == 2);
@@ -68,9 +68,9 @@ namespace UnitTest
         {
             var searchCondition = new RegionCondition();
             
-            searchCondition.Region.Add(Utility.GetLocationIdByName("台北市"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("大安區"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("萬華區"));
+            searchCondition.Region.Add(Helper.GetLocationIdByName("台北市"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("大安區"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("萬華區"));
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
 
@@ -84,14 +84,14 @@ namespace UnitTest
         {
             var searchCondition = new RegionCondition();
 
-            searchCondition.Region.Add(Utility.GetLocationIdByName("高雄市"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("鼓山區"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("楠梓區"));
+            searchCondition.Region.Add(Helper.GetLocationIdByName("高雄市"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("鼓山區"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("楠梓區"));
 
-            searchCondition.Region.Add(Utility.GetLocationIdByName("南投縣"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("埔里鎮"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("中寮鄉"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("仁愛鄉"));
+            searchCondition.Region.Add(Helper.GetLocationIdByName("南投縣"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("埔里鎮"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("中寮鄉"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("仁愛鄉"));
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
 
@@ -106,12 +106,12 @@ namespace UnitTest
         {
             var searchCondition = new RegionCondition();
 
-            searchCondition.Section.Add(Utility.GetLocationIdByName("旗津區"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("鳳山區"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("銅鑼鄉"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("東勢區"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("霧峰區"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("烏日區"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("旗津區"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("鳳山區"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("銅鑼鄉"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("東勢區"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("霧峰區"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("烏日區"));
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
 
@@ -127,9 +127,9 @@ namespace UnitTest
         {
             var searchCondition = new RegionCondition();
             //紅線底下的捷運站
-            searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("高雄國際機場"));
-            searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("凱旋"));
-            searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("三多商圈"));
+            searchCondition.mrtcoods.Add(Helper.GetMrtIdByName("高雄國際機場"));
+            searchCondition.mrtcoods.Add(Helper.GetMrtIdByName("凱旋"));
+            searchCondition.mrtcoods.Add(Helper.GetMrtIdByName("三多商圈"));
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
             Assert.IsTrue(result.First().txt=="高雄市");
@@ -150,8 +150,8 @@ namespace UnitTest
         public void CrossRegionSection_Expect_Success()
         {
             var searchCondition = new RegionCondition();
-            searchCondition.Region.Add(Utility.GetLocationIdByName("高雄市"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("安平區"));
+            searchCondition.Region.Add(Helper.GetLocationIdByName("高雄市"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("安平區"));
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
 
@@ -165,10 +165,10 @@ namespace UnitTest
         public void CrossRegionAndSelectAllRegion_Expect_Success()
         {
             var searchCondition = new RegionCondition();
-            searchCondition.Region.Add(Utility.GetLocationIdByName("台北市"));
-            searchCondition.Region.Add(Utility.GetLocationIdByName("高雄市"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("左營區"));
-            searchCondition.Section.Add(Utility.GetLocationIdByName("鳥松區"));
+            searchCondition.Region.Add(Helper.GetLocationIdByName("台北市"));
+            searchCondition.Region.Add(Helper.GetLocationIdByName("高雄市"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("左營區"));
+            searchCondition.Section.Add(Helper.GetLocationIdByName("鳥松區"));
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
 
@@ -182,9 +182,9 @@ namespace UnitTest
         public void CrossRegionMrtLine_Expect_Success()
         {
             var searchCondition = new RegionCondition();
-            searchCondition.Region.Add(Utility.GetLocationIdByName("台北市"));
-            searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("凱旋"));
-            searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("三多商圈"));
+            searchCondition.Region.Add(Helper.GetLocationIdByName("台北市"));
+            searchCondition.mrtcoods.Add(Helper.GetMrtIdByName("凱旋"));
+            searchCondition.mrtcoods.Add(Helper.GetMrtIdByName("三多商圈"));
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
 
@@ -199,10 +199,10 @@ namespace UnitTest
         {
             var searchCondition = new RegionCondition();
             //台北市
-            searchCondition.Region.Add(Utility.GetLocationIdByName("台北市"));
-            searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("南港展覽館"));
-            searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("大湖公園"));
-            searchCondition.mrtcoods.Add(Utility.GetMrtIdByName("台北小巨蛋"));
+            searchCondition.Region.Add(Helper.GetLocationIdByName("台北市"));
+            searchCondition.mrtcoods.Add(Helper.GetMrtIdByName("南港展覽館"));
+            searchCondition.mrtcoods.Add(Helper.GetMrtIdByName("大湖公園"));
+            searchCondition.mrtcoods.Add(Helper.GetMrtIdByName("台北小巨蛋"));
 
             var generator = new UrlGenerator();
             var result = generator.ConvertFilterConditionToRegionList(searchCondition);
