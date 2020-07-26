@@ -35,6 +35,9 @@ namespace RunFor591.Entity
         public int post_id { get; set; }
         //價格
         public string price { get; set; }
+        //格局
+        public string layout { get; set; }
+
         //縣市名稱
         public string regionName { get; set; }
         //地區

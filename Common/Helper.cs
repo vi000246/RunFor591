@@ -96,6 +96,8 @@ namespace RunFor591.Common
             sb.Append(house.floorInfo+"\r\n");
             sb.Append("價格:" + house.price+"\r\n");
             sb.Append("地址:" + house.address + "\r\n");
+            if(!string.IsNullOrEmpty(house.layout))
+                sb.Append("格局:" + house.layout);
             sb.Append("網址:" + house.houseUrl);
             return sb.ToString();
         }

@@ -213,7 +213,7 @@
     <Compile Include="NotifyUtility\INotify.cs" />
     <Compile Include="Common\Setting.cs" />
     <Compile Include="CrawlerUtility\Crawler.cs" />
-    <Compile Include="DataBase\JsonBin.cs" />
+    <Compile Include="DataBase\JsonBlob.cs" />
     <Compile Include="Entity\591houseEntity.cs" />
     <Compile Include="Entity\ArchiveHouse.cs" />
     <Compile Include="NotifyUtility\LineNotify.cs" />

@@ -35,8 +35,9 @@ namespace RunFor591
             var houseList = GetHouseList(csrfToken);
             var matchHouse = FilterHouse(houseList);
             Helper.WriteMultipleLineLig("New House List", matchHouse.Select(x=>x.title + "url:"+x.houseUrl).ToList(), log);
-            var ShouldAlertHouse = GetShouldAlertHouse(matchHouse);
+            var ShouldAlertHouse = GetShouldAlertHouseFromDb(matchHouse);
             PubMessageToNotifiter(ShouldAlertHouse);
+            SyncDataToDb(ShouldAlertHouse);
         }
 
         public IEnumerable<houseEntity> GetHouseList(string csrfToken)
@@ -57,7 +58,7 @@ namespace RunFor591
 
         public PhotoListResponse GetPhotoList(houseEntity house)
         {
-            var url = $"https://rent.591.com.tw/home/business/getPhotoList?post_id={house.post_id}&type=1";
+            var url = UrlGenerator._BaseUrl + UrlGenerator._PhotoListUrl + $"?post_id={house.post_id}&type=1";
             var response = Get591Response(url, Method.GET).Content;
             var PhotoListResponse = JsonConvert.DeserializeObject<PhotoListResponse>(response);
             return PhotoListResponse;
@@ -106,18 +107,6 @@ namespace RunFor591
             return tokenValue;
         }
 
-        //公司不能用json bin...
-//        public string GetJsonBinExample()
-//        {
-//            var client = new RestClient("https://api.jsonbin.io/b/5f19128591806166284734fc");
-//            var request = new RestRequest();
-//            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;
-//            request.Method = Method.GET;
-//            request.AddHeader("secret-key", "$2b$10$nH0piEsV0NDZi1jWWc185emNZ2.5sohh0iNhR5yuHqfK5vi051tCu");
-//            var response = client.Get(request);
-//            return response.Content;
-//        }
-
         public IEnumerable<houseEntity> Convert591DataToEntity(IEnumerable<Datum> objlist)
         {
             var entityList = new List<houseEntity>();
@@ -140,6 +129,7 @@ namespace RunFor591
                 entity.alley_name = obj.alley_name;
                 entity.street_name = obj.street_name;
                 entity.kind_name = obj.kind_name;
+                entity.layout = obj.layout;
 
 
                 entityList.Add(entity);
@@ -149,17 +139,27 @@ namespace RunFor591
             return entityList;
         }
 
-        //取得尚未發送過通知的房屋列表
-        public IEnumerable<houseEntity> GetShouldAlertHouse(IEnumerable<houseEntity> houseList)
+        //取得已發送過通知的房屋列表，並過濾出沒發送通知的列表
+        public IEnumerable<houseEntity> GetShouldAlertHouseFromDb(IEnumerable<houseEntity> houseList)
         {
-            
-            return houseList;
+            var dbClient = AutoFacUtility.Container.Resolve<IDataBase>();
+            var archiveHouse = dbClient.GetAllDataFromDB();
+            if (archiveHouse.houseList != null && archiveHouse.houseList.Count > 0)
+            {
+                var archiveIds = archiveHouse.houseList.Select(x => x.postId).ToList();
+                return houseList.Where(x => !archiveIds.Contains(x.post_id));
+            }
+            else
+            {
+                return houseList;
+            }
         }
 
-        //將已發送過通知的房屋儲存至db
-        public void StoreDataToDb(IEnumerable<houseEntity> houseList)
+        //將已發送過通知的房屋存到db,並刪掉已過期的
+        public void SyncDataToDb(IEnumerable<houseEntity> houseList)
         {
-
+            var dbClient = AutoFacUtility.Container.Resolve<IDataBase>();
+            dbClient.UpdateData(houseList.Select(x=>x.post_id).ToList());
         }
 
         public void PubMessageToNotifiter(IEnumerable<houseEntity> houseEntity)
