@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -167,7 +168,7 @@ namespace RunFor591
             foreach (var house in houseEntity)
             {
                 var photoList = GetPhotoList(house);
-                notifyService.PubMessage("");
+                notifyService.PubNotify(house,photoList);
             }
             
         }

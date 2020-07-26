@@ -15,7 +15,5 @@ namespace RunFor591.Entity
         //HTTP/HTTPS UR  Maximum size of 2048×2048px JPEG
         public string imageFullsize { get; set; }
 
-        public byte[] imageFile { get; set; }
-        //貼圖id https://devdocs.line.me/files/sticker_list.pdf
     }
 }

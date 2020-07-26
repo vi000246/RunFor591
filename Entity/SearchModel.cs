@@ -24,7 +24,7 @@ namespace RunFor591.Entity
 
     public class BaseCondition
     {
-        public string RendPrice { get; set; }
+        public string RentPrice { get; set; }
         public string Area { get; set; }
         public string Order { get; set; }
         public string OrderType { get; set; }
