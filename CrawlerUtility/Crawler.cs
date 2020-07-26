@@ -36,9 +36,18 @@ namespace RunFor591
             var matchHouse = FilterHouse(houseList);
             
             var ShouldAlertHouse = GetShouldAlertHouseFromDb(matchHouse);
-            Helper.WriteMultipleLineLig("新物件列表(排除需通知物件):", matchHouse.Except(ShouldAlertHouse)
-                .Select(x => x.title + "url:" + x.houseUrl).ToList(), log);
-            Helper.WriteMultipleLineLig("需要發送通知的物件列表:", ShouldAlertHouse.Select(x=>x.title + "url:"+x.houseUrl).ToList(), log);
+            if (matchHouse.Any())
+            {
+                Helper.WriteMultipleLineLig("新物件列表(排除需通知物件):", matchHouse.Except(ShouldAlertHouse)
+                    .Select(x => x.title + "url:" + x.houseUrl).ToList(), log);
+            }
+
+            if (ShouldAlertHouse.Any())
+            {
+                Helper.WriteMultipleLineLig("需要發送通知的物件列表:",
+                    ShouldAlertHouse.Select(x => x.title + "url:" + x.houseUrl).ToList(), log);
+            }
+
             PubMessageToNotifiter(ShouldAlertHouse);
             SyncDataToDb(ShouldAlertHouse);
         }
@@ -63,7 +72,16 @@ namespace RunFor591
         {
             var url = UrlGenerator._BaseUrl + UrlGenerator._PhotoListUrl + $"?post_id={house.post_id}&type=1";
             var response = Get591Response(url, Method.GET).Content;
-            var PhotoListResponse = JsonConvert.DeserializeObject<PhotoListResponse>(response);
+            var PhotoListResponse = new PhotoListResponse();
+            try
+            {
+                PhotoListResponse = JsonConvert.DeserializeObject<PhotoListResponse>(response);
+            }
+            catch
+            {
+                return null;
+            }
+
             return PhotoListResponse;
         }
 

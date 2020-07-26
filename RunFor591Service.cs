@@ -23,6 +23,7 @@ namespace RunFor591
         {
             //註冊IOC
             AutoFacUtility.Run();
+            log.Info("Service Start.");
             AppDomain currentDomain = AppDomain.CurrentDomain;
             currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
             var MyTimer = new Timer();
@@ -56,7 +57,7 @@ namespace RunFor591
             }
             catch (Exception ex)
             {
-                var msg = "Service Error. msg:" + ex.Message;
+                var msg = "Service Error. msg:" + ex.Message+ex.StackTrace;
                 AppContext.Log(msg);
                 log.Error(msg);
                 var notifyService = AutoFacUtility.Container.Resolve<INotify>();

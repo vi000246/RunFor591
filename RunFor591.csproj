@@ -203,7 +203,6 @@
     <Compile Include="CrawlerUtility\UrlGenerator.cs" />
     <Compile Include="DataBase\IDataBase.cs" />
     <Compile Include="DataBase\LocationJsonReader.cs" />
-    <Compile Include="Entity\DBType.cs" />
     <Compile Include="Entity\houseEntity.cs" />
     <Compile Include="Entity\LineNotifyEntity.cs" />
     <Compile Include="Entity\LineNotifyResponse.cs" />

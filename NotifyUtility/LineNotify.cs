@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Net.Http;
 using Microsoft.AspNetCore.Http;
@@ -54,8 +55,15 @@ namespace RunFor591
         {
             var form = new LineNotifyEntity();
             form.message = Helper.NotifyMessageBuilder(house);
-            var imageByte = ImageProcessor.ConvertMultipleImageIntoOne(photos);
-            LineNotifyApi(form, imageByte);
+            if (photos != null)
+            {
+                var imageByte = ImageProcessor.ConvertMultipleImageIntoOne(photos);
+                LineNotifyApi(form, imageByte);
+            }
+            else
+            {
+                LineNotifyApi(form);
+            }
         }
 
         public void SendMessage(string msg)
