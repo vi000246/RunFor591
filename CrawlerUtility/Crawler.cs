@@ -34,8 +34,11 @@ namespace RunFor591
             var csrfToken = GetCSRFToken();
             var houseList = GetHouseList(csrfToken);
             var matchHouse = FilterHouse(houseList);
-            Helper.WriteMultipleLineLig("New House List", matchHouse.Select(x=>x.title + "url:"+x.houseUrl).ToList(), log);
+            
             var ShouldAlertHouse = GetShouldAlertHouseFromDb(matchHouse);
+            Helper.WriteMultipleLineLig("新物件列表(排除需通知物件):", matchHouse.Except(ShouldAlertHouse)
+                .Select(x => x.title + "url:" + x.houseUrl).ToList(), log);
+            Helper.WriteMultipleLineLig("需要發送通知的物件列表:", ShouldAlertHouse.Select(x=>x.title + "url:"+x.houseUrl).ToList(), log);
             PubMessageToNotifiter(ShouldAlertHouse);
             SyncDataToDb(ShouldAlertHouse);
         }
