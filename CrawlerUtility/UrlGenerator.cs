@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using JsonConfig;
@@ -182,15 +183,44 @@ namespace RunFor591.CrawlerUtility
         public void ValidateFilterCondition(SearchModel filter)
         {
             //驗證region condition
-                //判斷是否有選擇region
-                //判斷是否有選擇kind
-                //判斷各參數是否列在mrt.json跟 region.json裡
-                //如果有選擇鄉鎮section，判斷是否在region底下
-                //如果有選擇捷運線，判斷是否在region底下
-                //如果有選擇捷運線，捷運站為必選
-                //判斷捷運站是否在捷運線底下
+            if (filter.regionCondition.Region.Count == 0 &&
+                filter.regionCondition.Section.Count == 0 &&
+                filter.regionCondition.mrtcoods.Count == 0)
+            {
+                throw new ArgumentException("Please choose Region or Section or MrtCoods");
+            }
+
+            //判斷各參數是否列在mrt.json跟 region.json裡
+            foreach (var id in filter.regionCondition.Region)
+            {
+                if (!string.IsNullOrEmpty(id))
+                    Helper.GetLocationIdById(id);
+            }
+            foreach (var id in filter.regionCondition.Section)
+            {
+                if(!string.IsNullOrEmpty(id))
+                    Helper.GetLocationIdById(id);
+            }
+            foreach (var id in filter.regionCondition.mrtcoods)
+            {
+                if (!string.IsNullOrEmpty(id))
+                    Helper.GetMrtIdById(id);
+            }
             //驗證base condition
-            //各參數的格式是否正確
+            if (!Regex.IsMatch(filter.baseCondition.RentPrice, @"^(\d+)?,(\d+)?$"))
+            {
+                throw new ArgumentException("Invalid rent price setting.");
+            }
+            if (!Regex.IsMatch(filter.baseCondition.Area, @"^(\d+)?,(\d+)?$"))
+            {
+                throw new ArgumentException("Invalid area setting.");
+            }
+
+            if (filter.baseCondition.OrderType != "asc" && filter.baseCondition.OrderType != "desc")
+            {
+                throw new ArgumentException("Invalid OrderType setting.");
+            }
+
         }
 
         private static object GetPropValue(object src, string propName)
