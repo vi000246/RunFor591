@@ -111,3 +111,4 @@ C:\Users\vi000\source\repos\RunFor591\bin\Debug\System.Diagnostics.DiagnosticSou
 C:\Users\vi000\source\repos\RunFor591\bin\Debug\System.Memory.xml
 C:\Users\vi000\source\repos\RunFor591\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\vi000\source\repos\RunFor591\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\vi000\source\repos\RunFor591\obj\Debug\RunFor591.csprojAssemblyReference.cache
