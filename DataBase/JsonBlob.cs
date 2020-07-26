@@ -74,9 +74,6 @@ namespace RunFor591
                 .FirstOrDefault().ToString();
             var match = Regex.Match(location, ".*jsonBlob/(.+)");
             var token = match.Groups[1].Value;
-
-            //將取到的值存到settings.conf
-//            Setting.SetJsonHostingUrlPath(token);
             return token;
         }
 

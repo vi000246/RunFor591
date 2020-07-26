@@ -30,7 +30,7 @@ namespace RunFor591.Common
             {
                 var msg = "Invalid setting, GetTimerInterval fail.Invalid setting. " + ex.Message;
                 log.Debug(msg);
-                throw new ArgumentException(msg);
+                throw new InvalidSettingException(msg);
             }
         }
 
@@ -58,7 +58,7 @@ namespace RunFor591.Common
             var token =  Config.User.LineAccessToken;
             if (string.IsNullOrEmpty(token))
             {
-                throw new ArgumentException("Invalid setting, Line  access token cannot be empty.");
+                throw new InvalidSettingException("Invalid setting, Line  access token cannot be empty.");
             }
             return token;
         }
@@ -84,14 +84,14 @@ namespace RunFor591.Common
                 {
                     var msg = "Cannot CastSettingToClass T:" + nameof(T);
                     log.Debug(msg);
-                    throw new ArgumentException(msg);
+                    throw new InvalidSettingException(msg);
                 }
             }
             catch (Exception ex)
             {
                 var msg = "cast setting fail. " + ex.Message;
                 log.Debug(msg);
-                throw new ArgumentException(msg);
+                throw new InvalidSettingException(msg);
             }
         }
 

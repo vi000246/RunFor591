@@ -114,7 +114,7 @@ namespace RunFor591.CrawlerUtility
             //取出region跟mrt對照表
             var locationEntity = LocationJson.GetInstance();
             if(condition.Region.Count ==0 && condition.mrtcoods.Count == 0 && condition.Section.Count == 0)
-                throw new ArgumentException("Please choose Region or MrtCoods or Section in settings.conf");
+                throw new InvalidSettingException("Please choose Region or MrtCoods or Section in settings.conf");
             //取出所選擇的縣市
             var regionList = locationEntity.regionEntity.region
                 .ToList()
@@ -188,18 +188,18 @@ namespace RunFor591.CrawlerUtility
                 filter.regionCondition.Section.Count == 0 &&
                 filter.regionCondition.mrtcoods.Count == 0)
             {
-                throw new ArgumentException("Settings.conf error,Please choose Region or Section or MrtCoods");
+                throw new InvalidSettingException("Settings.conf error,Please choose Region or Section or MrtCoods");
             }
 
             if (filter.regionCondition.kind == null || filter.regionCondition.kind.Count == 0)
             {
-                throw new ArgumentException("Settings.conf error,kind cannot be empty");
+                throw new InvalidSettingException("Settings.conf error,kind cannot be empty");
             }
 
             if (filter.regionCondition.kind.Contains("0") &&
                 filter.regionCondition.kind.Count > 1)
             {
-                throw new ArgumentException("Settings.conf error,if kind = 0, cannot enter more than one kind");
+                throw new InvalidSettingException("Settings.conf error,if kind = 0, cannot enter more than one kind");
             }
 
             //判斷各參數是否列在mrt.json跟 region.json裡
@@ -221,16 +221,16 @@ namespace RunFor591.CrawlerUtility
             //驗證base condition
             if (!Regex.IsMatch(filter.baseCondition.RentPrice, @"^(\d+)?,(\d+)?$"))
             {
-                throw new ArgumentException("Invalid rent price setting.");
+                throw new InvalidSettingException("Invalid rent price setting.");
             }
             if (!Regex.IsMatch(filter.baseCondition.Area, @"^(\d+)?,(\d+)?$"))
             {
-                throw new ArgumentException("Invalid area setting.");
+                throw new InvalidSettingException("Invalid area setting.");
             }
 
             if (filter.baseCondition.OrderType != "asc" && filter.baseCondition.OrderType != "desc")
             {
-                throw new ArgumentException("Invalid OrderType setting.");
+                throw new InvalidSettingException("Invalid OrderType setting.");
             }
 
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace RunFor591.Common
                         return section.id;
                 } 
             }
-            throw new ArgumentException("Cannot find name in Region.json  name:"+name);
+            throw new InvalidSettingException("Cannot find name in Region.json  name:"+name);
         }
         public static string GetLocationIdById(string Id)
         {
@@ -44,7 +45,7 @@ namespace RunFor591.Common
                         return section.id;
                 }
             }
-            throw new ArgumentException("Cannot find id in Region.json  id:" + Id);
+            throw new InvalidSettingException("Cannot find id in Region.json  id:" + Id);
         }
         //依據捷運線或捷運站名稱，取得id
         public static string GetMrtIdByName(string name)
@@ -64,7 +65,7 @@ namespace RunFor591.Common
                     }
                 }
             }
-            throw new ArgumentException("Cannot find name in MrtRegionId.json name:"+name);
+            throw new InvalidSettingException("Cannot find name in MrtRegionId.json name:"+name);
         }
 
         public static string GetMrtIdById(string Id)
@@ -84,7 +85,7 @@ namespace RunFor591.Common
                     }
                 }
             }
-            throw new ArgumentException("Cannot find id in MrtRegionId.json id:" + Id);
+            throw new InvalidSettingException("Cannot find id in MrtRegionId.json id:" + Id);
         }
 
         public static string NotifyMessageBuilder(houseEntity house)
@@ -113,6 +114,33 @@ namespace RunFor591.Common
                 return (T)formatter.Deserialize(ms);
             }
         }
+        public static IntPtr WTS_CURRENT_SERVER_HANDLE = IntPtr.Zero;
+        public static void ShowMessageBox(string message, string title)
+        {
+            int resp = 0;
+            WTSSendMessage(
+                WTS_CURRENT_SERVER_HANDLE,
+                WTSGetActiveConsoleSessionId(),//獲得當前顯示的桌面所在的SessionID
+                title, title.Length,
+                message, message.Length,
+                0, 0, out resp, false);
+        }
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern int WTSGetActiveConsoleSessionId();
+
+        [DllImport("wtsapi32.dll", SetLastError = true)]
+        public static extern bool WTSSendMessage( //一個Session中的進程可以用WTSSendMessage，讓另一個Session彈出對話框
+            IntPtr hServer,
+            int SessionId,
+            String pTitle,
+            int TitleLength,
+            String pMessage,
+            int MessageLength,
+            int Style,
+            int Timeout,
+            out int pResponse,
+            bool bWait);
 
         public static void WriteMultipleLineLig(string msgTitle,List<string> msgs ,ILog log)
         {
