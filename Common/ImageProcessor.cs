@@ -61,21 +61,19 @@ namespace RunFor591.Common
 
             foreach (var image in images)
             {
-                width += image.Width;
-                height = image.Height > height
-                    ? image.Height
-                    : height;
+                    width += image.Width;
+                    height = image.Height > height ? image.Height : height;
             }
 
             var bitmap = new Bitmap(width, height);
             using (var g = Graphics.FromImage(bitmap))
             {
-                var localWidth = 0;
-                foreach (var image in images)
-                {
-                    g.DrawImage(image, localWidth, 0);
-                    localWidth += image.Width;
-                }
+                    var localWidth = 0;
+                    foreach (var image in images)
+                    {
+                        g.DrawImage(image, localWidth, 0);
+                        localWidth += image.Width;
+                    }
             }
             return bitmap;
         }
