@@ -147,7 +147,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(InvalidSettingException))]
         public void NoSelectRegion_Expect_Exception()
         {
             var searchCondition = new RegionCondition();
