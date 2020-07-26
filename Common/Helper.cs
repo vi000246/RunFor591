@@ -93,7 +93,7 @@ namespace RunFor591.Common
             sb.Append("===============\r\n");
             sb.Append("名稱:" + house.title+"\r\n");
             sb.Append("類型:" + house.kind_name+"\r\n");
-            sb.Append("樓層:" + house.floorInfo+"\r\n");
+            sb.Append(house.floorInfo+"\r\n");
             sb.Append("價格:" + house.price+"\r\n");
             sb.Append("地址:" + house.address + "\r\n");
             sb.Append("網址:" + house.houseUrl);
