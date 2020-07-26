@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
 using RunFor591.Entity;
+using Encoder = System.Text.Encoder;
 
 namespace RunFor591.Common
 {
@@ -16,8 +17,20 @@ namespace RunFor591.Common
         {
             var images = ConvertUrlToImages(data);
             var oneImg = Merge(images);
-            ImageConverter converter = new ImageConverter();
-            return (byte[])converter.ConvertTo(oneImg, typeof(byte[]));
+            return SaveImageToByteArray(oneImg);
+        }
+
+        //壓縮圖片
+        private static byte[] SaveImageToByteArray(Image image, int jpegQuality = 90)
+        {
+            using (var ms = new MemoryStream())
+            {
+                var jpegEncoder = GetEncoder(ImageFormat.Jpeg);
+                var encoderParameters = new EncoderParameters(1);
+                encoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, (long)jpegQuality);
+                image.Save(ms, jpegEncoder, encoderParameters);
+                return ms.ToArray();
+            }
         }
 
         public static Image ReadImage(string imagePath)
@@ -45,22 +58,39 @@ namespace RunFor591.Common
         {
             var width = 0;
             var height = 0;
-            // Get max width and height of the image
+
             foreach (var image in images)
             {
-                width = image.Width > width ? image.Width : width;
-                height = image.Height > height ? image.Height : height;
+                width += image.Width;
+                height = image.Height > height
+                    ? image.Height
+                    : height;
             }
-            // merge images
+
             var bitmap = new Bitmap(width, height);
             using (var g = Graphics.FromImage(bitmap))
             {
+                var localWidth = 0;
                 foreach (var image in images)
                 {
-                    g.DrawImage(image, 0, 0);
+                    g.DrawImage(image, localWidth, 0);
+                    localWidth += image.Width;
                 }
             }
             return bitmap;
+        }
+        private static ImageCodecInfo GetEncoder(ImageFormat format)
+        {
+            var codecs = ImageCodecInfo.GetImageDecoders();
+            foreach (ImageCodecInfo codec in codecs)
+            {
+                if (codec.FormatID == format.Guid)
+                {
+                    return codec;
+                }
+            }
+
+            return null;
         }
     }
 }
