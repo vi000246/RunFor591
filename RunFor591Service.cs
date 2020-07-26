@@ -6,8 +6,10 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using Autofac;
 using RunFor591.Common;
 using RunFor591.CrawlerUtility;
+using RunFor591.NotifyUtility;
 using SimpleServices;
 
 namespace RunFor591
@@ -57,6 +59,8 @@ namespace RunFor591
                 var msg = "Service Error. msg:" + ex.Message;
                 AppContext.Log(msg);
                 log.Error(msg);
+                var notifyService = AutoFacUtility.Container.Resolve<INotify>();
+                notifyService.SendMessage(msg);
             }
         }
 
@@ -70,7 +74,10 @@ namespace RunFor591
         void MyHandler(object sender, UnhandledExceptionEventArgs args)
         {
             Exception e = (Exception)args.ExceptionObject;
-            log.Error("Windows Service Error on: {0} " + e.Message + e.StackTrace);
+            var msg = "Windows Service Error on: {0} " + e.Message + e.StackTrace;
+            log.Error(msg);
+            var notifyService = AutoFacUtility.Container.Resolve<INotify>();
+            notifyService.SendMessage(msg);
         }
     }
 }

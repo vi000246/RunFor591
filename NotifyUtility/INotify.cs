@@ -10,5 +10,6 @@ namespace RunFor591.NotifyUtility
     public interface INotify
     {
         void PubNotify(houseEntity house,PhotoListResponse photos);
+        void SendMessage(string msg);
     }
 }

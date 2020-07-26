@@ -57,5 +57,12 @@ namespace RunFor591
             var imageByte = ImageProcessor.ConvertMultipleImageIntoOne(photos);
             LineNotifyApi(form, imageByte);
         }
+
+        public void SendMessage(string msg)
+        {
+            var form = new LineNotifyEntity();
+            form.message = msg;
+            LineNotifyApi(form);
+        }
     }
 }
