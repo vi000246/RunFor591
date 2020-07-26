@@ -7,7 +7,7 @@ using JsonConfig;
 using Newtonsoft.Json;
 using RunFor591.Entity;
 
-namespace RunFor591
+namespace RunFor591.Common
 {
     //註:Config.User會讀取settings.conf的設定
     //其他使用方式請參考JsonConfig的說明頁面
@@ -26,27 +26,33 @@ namespace RunFor591
             }
             catch (Exception ex)
             {
-                log.Debug("GetTimerInterval fail.Invalid setting. " + ex.Message);
-                throw ex;
+                var msg = "Invalid setting, GetTimerInterval fail.Invalid setting. " + ex.Message;
+                log.Debug(msg);
+                throw new ArgumentException(msg);
             }
         }
 
         //取得json db的url位置
         public static string GetJsonHostingUrlPath()
         {
-            return Config.User.JsonHostingUrlPath;
+            var path =  Config.User.JsonHostingUrlPath;
+            if (string.IsNullOrEmpty(path))
+            {
+                throw new ArgumentException("Invalid setting, json hosting url cannot be empty.");
+            }
+            return path;
         }
 
         public static string GetLineToken()
         {
-            return Config.User.LineAccessToken;
+            var token =  Config.User.LineAccessToken;
+            if (string.IsNullOrEmpty(token))
+            {
+                throw new ArgumentException("Invalid setting, Line  access token cannot be empty.");
+            }
+            return token;
         }
 
-        //取得要通知的line的key
-        public static string GetLineApiKey()
-        {
-            return "";
-        }
 
         //取得house filter的條件
         public static SearchModel GetFilterCondition()

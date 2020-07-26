@@ -211,7 +211,7 @@
     <Compile Include="LocationEntity\MRTEntity.cs" />
     <Compile Include="LocationEntity\RegionEntity.cs" />
     <Compile Include="NotifyUtility\INotify.cs" />
-    <Compile Include="Setting.cs" />
+    <Compile Include="Common\Setting.cs" />
     <Compile Include="CrawlerUtility\Crawler.cs" />
     <Compile Include="DataBase\JsonBin.cs" />
     <Compile Include="Entity\591houseEntity.cs" />
