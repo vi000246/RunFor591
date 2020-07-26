@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
+using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -19,7 +21,8 @@ namespace RunFor591
         {
             //註冊IOC
             AutoFacUtility.Run();
-            new Crawler().StartCrawl591();
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
             var MyTimer = new Timer();
             MyTimer.Elapsed += new ElapsedEventHandler(StartCrawler);
             var interval = Setting.GetTimerInterval();
@@ -29,15 +32,45 @@ namespace RunFor591
         private void StartCrawler(object sender, ElapsedEventArgs e)
 
         {
-            new Crawler().StartCrawl591();
-            log.Debug("crawler excute");
+            try
+            {
+                log.Info("crawler excute");
+                AppContext.Log("crawler excute");
+                new Crawler().StartCrawl591();
+            }
+            catch (InvalidSettingException ex)
+            {
+                var msg = "Invalid Setting" + ex.Message;
+                log.Error(msg);
+                AppContext.Log(msg);
+                Helper.ShowMessageBox(msg,"Invalid settings.conf");
+                //如果是windows service，就用serviceController停止，service name寫在program.cs
+                if(!Environment.UserInteractive)
+                    new ServiceController("RunFor591").Stop();
+                else
+                {
+                    Environment.Exit(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                var msg = "Service Error. msg:" + ex.Message;
+                AppContext.Log(msg);
+                log.Error(msg);
+            }
         }
 
 
         public void Stop()
         {
             AppContext.Log("Service stop!");
-            log.Debug("Application Stopped");
+            log.Info("Service stop!");
+        }
+
+        void MyHandler(object sender, UnhandledExceptionEventArgs args)
+        {
+            Exception e = (Exception)args.ExceptionObject;
+            log.Error("Windows Service Error on: {0} " + e.Message + e.StackTrace);
         }
     }
 }

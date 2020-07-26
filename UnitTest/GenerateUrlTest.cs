@@ -23,6 +23,16 @@ namespace UnitTest
 //            var urlResult = generator.GenerateUrlBySearchModel(searchCondition);
 //            Assert.IsTrue(urlResult.Count>1);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidSettingException))]
+        public void NoSelectRegion_Mrt_Section_Expect_Exception()
+        {
+            var searchCondition = new RegionCondition();
+            var generator = new UrlGenerator();
+            var result = generator.ConvertFilterConditionToRegionList(searchCondition);
+        }
+
         [TestMethod]
         //只有選擇捷運站
         public void OnlyChooseMrtCoods()
