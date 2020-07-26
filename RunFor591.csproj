@@ -164,6 +164,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.1\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
@@ -197,12 +198,14 @@
   <ItemGroup>
     <Compile Include="Common\AutoFacUtility.cs" />
     <Compile Include="Common\Helper.cs" />
+    <Compile Include="Common\ImageProcessor.cs" />
     <Compile Include="CrawlerUtility\UrlGenerator.cs" />
     <Compile Include="DataBase\IDataBase.cs" />
     <Compile Include="DataBase\LocationJsonReader.cs" />
     <Compile Include="Entity\DBType.cs" />
     <Compile Include="Entity\houseEntity.cs" />
     <Compile Include="Entity\LineNotifyEntity.cs" />
+    <Compile Include="Entity\LineNotifyResponse.cs" />
     <Compile Include="Entity\PhotoListResponse.cs" />
     <Compile Include="Entity\SearchModel.cs" />
     <Compile Include="LocationEntity\MRTEntity.cs" />

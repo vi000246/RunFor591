@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
 using Newtonsoft.Json;
 using RestSharp;
+using RunFor591.Common;
 using RunFor591.CrawlerUtility;
 using RunFor591.Entity;
 using RunFor591.NotifyUtility;
@@ -10,30 +14,50 @@ namespace RunFor591
 {
     public class LineNotify :INotify
     {
-        private void LineNotifyApi(LineNotifyEntity form)
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        //註:api 一小時只能呼叫1000次
+        private void LineNotifyApi(LineNotifyEntity form,byte[] imageByte = null)
         {
             var linetoken = Setting.GetLineToken();
             var client = new RestClient("https://notify-api.line.me/api/notify");
             var request = new RestRequest();
             request.Method = Method.POST;
-            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            if (imageByte == null)
+            {
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            }
+            else
+            {
+                request.AddHeader("Content-Type", "multipart/form-data");
+
+            }
+
             request.AddHeader("Authorization", $"Bearer {linetoken}");
+
            
             request.AddObject(form);
-            if(form.imageFile != null)
-                request.AddParameter("application/octet-stream", form.imageFile, ParameterType.RequestBody);
+            if (imageByte != null)
+            {
+                request.AddFile("imageFile", imageByte, "img.jpeg", "image/jpeg");
+            }
 
 
-            var response = client.Execute(request).Content;
+            var RawResponse = client.Execute(request);
+            var res = JsonConvert.DeserializeObject<LineNotifyResponse>(RawResponse.Content);
+            if (res.status != 200)
+            {
+                log.Error($"Send Line Notify error status:{res.status} msg:{res.message}");
+            }
         }
         //發送訊息到line
         public void PubNotify(houseEntity house, PhotoListResponse photos)
         {
             var form = new LineNotifyEntity();
-            form.message = "test call api";
-            form.imageThumbnail = "https://i.imgur.com/tmdLbuo.jpg";
-            form.imageFullsize = "https://i.imgur.com/tmdLbuo.jpg";
-            LineNotifyApi(form);
+            form.message = "測試image";
+//            form.imageThumbnail = "https://i.imgur.com/tmdLbuo.jpg";
+//            form.imageFullsize = "https://i.imgur.com/tmdLbuo.jpg";
+            var imageByte = ImageProcessor.ConvertMultipleImageIntoOne(photos);
+            LineNotifyApi(form, imageByte);
         }
     }
 }
