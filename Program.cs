@@ -20,7 +20,7 @@ namespace RunFor591
         private static void Main(string[] args)
         {
             System.AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionTrapper;
-            XmlConfigurator.Configure(new System.IO.FileInfo("./log4net.config"));
+            XmlConfigurator.Configure(new System.IO.FileInfo(AppDomain.CurrentDomain.BaseDirectory + "\\log4net.config"));
             new Service(args, new List<IWindowsService> {new RunFor591Service()}.ToArray
                         ,
                         installationSettings: (serviceInstaller, serviceProcessInstaller) =>
