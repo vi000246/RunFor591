@@ -53,7 +53,7 @@ namespace RunFor591.DataBase
         public static T LoadJson<T>(string fileName)
         {
             T items;
-            using (StreamReader r = new StreamReader(fileName, System.Text.Encoding.Default))
+            using (StreamReader r = new StreamReader(AppDomain.CurrentDomain.BaseDirectory+"\\"+fileName, System.Text.Encoding.Default))
             {
                 string json = r.ReadToEnd();
                 items = JsonConvert.DeserializeObject<T>(json);
