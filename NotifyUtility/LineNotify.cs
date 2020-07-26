@@ -53,9 +53,7 @@ namespace RunFor591
         public void PubNotify(houseEntity house, PhotoListResponse photos)
         {
             var form = new LineNotifyEntity();
-            form.message = "測試image";
-//            form.imageThumbnail = "https://i.imgur.com/tmdLbuo.jpg";
-//            form.imageFullsize = "https://i.imgur.com/tmdLbuo.jpg";
+            form.message = Helper.NotifyMessageBuilder(house);
             var imageByte = ImageProcessor.ConvertMultipleImageIntoOne(photos);
             LineNotifyApi(form, imageByte);
         }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using log4net;
 using RunFor591.DataBase;
+using RunFor591.Entity;
 
 namespace RunFor591.Common
 {
@@ -29,7 +30,22 @@ namespace RunFor591.Common
             }
             throw new ArgumentException("Cannot find name in Region.json  name:"+name);
         }
-
+        public static string GetLocationIdById(string Id)
+        {
+            var locationEntity = LocationJson.GetInstance();
+            var region = locationEntity.regionEntity.region.FirstOrDefault(x => x.id == Id);
+            if (region != null)
+                return region.id;
+            foreach (var reg in locationEntity.regionEntity.region)
+            {
+                foreach (var section in reg.section)
+                {
+                    if (section.id == Id)
+                        return section.id;
+                }
+            }
+            throw new ArgumentException("Cannot find id in Region.json  id:" + Id);
+        }
         //依據捷運線或捷運站名稱，取得id
         public static string GetMrtIdByName(string name)
         {
@@ -49,9 +65,41 @@ namespace RunFor591.Common
                 }
             }
             throw new ArgumentException("Cannot find name in MrtRegionId.json name:"+name);
-
-            
         }
+
+        public static string GetMrtIdById(string Id)
+        {
+            var locationEntity = LocationJson.GetInstance();
+            foreach (var mrt in locationEntity.mrtEntity.mrts)
+            {
+
+                foreach (var mrtline in mrt.mrtline)
+                {
+                    if (mrtline.sid == Id)
+                        return mrtline.sid;
+                    foreach (var station in mrtline.station)
+                    {
+                        if (station.nid == Id)
+                            return station.nid;
+                    }
+                }
+            }
+            throw new ArgumentException("Cannot find id in MrtRegionId.json id:" + Id);
+        }
+
+        public static string NotifyMessageBuilder(houseEntity house)
+        {
+            System.Text.StringBuilder sb = new StringBuilder();
+            sb.Append("===============\r\n");
+            sb.Append("名稱:" + house.title+"\r\n");
+            sb.Append("類型:" + house.kind_name+"\r\n");
+            sb.Append("樓層:" + house.floorInfo+"\r\n");
+            sb.Append("價格:" + house.price+"\r\n");
+            sb.Append("地址:" + house.address + "\r\n");
+            sb.Append("網址:" + house.houseUrl);
+            return sb.ToString();
+        }
+
         public static T DeepClone<T>(this T obj)
         {
             using (var ms = new MemoryStream())
