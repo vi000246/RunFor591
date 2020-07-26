@@ -19,6 +19,7 @@ namespace RunFor591.CrawlerUtility
         public static string _BaseUrl = "https://rent.591.com.tw/";
         public static string _HouseListUrl = "home/search/rsList";
         public static string _PhotoListUrl = "home/business/getPhotoList";
+        public static string _LineNotifyUrl = "https://notify-api.line.me/api/notify";
 
 
         //依據搜尋條件，產生所有要request的api url
@@ -187,7 +188,18 @@ namespace RunFor591.CrawlerUtility
                 filter.regionCondition.Section.Count == 0 &&
                 filter.regionCondition.mrtcoods.Count == 0)
             {
-                throw new ArgumentException("Please choose Region or Section or MrtCoods");
+                throw new ArgumentException("Settings.conf error,Please choose Region or Section or MrtCoods");
+            }
+
+            if (filter.regionCondition.kind == null || filter.regionCondition.kind.Count == 0)
+            {
+                throw new ArgumentException("Settings.conf error,kind cannot be empty");
+            }
+
+            if (filter.regionCondition.kind.Contains("0") &&
+                filter.regionCondition.kind.Count > 1)
+            {
+                throw new ArgumentException("Settings.conf error,if kind = 0, cannot enter more than one kind");
             }
 
             //判斷各參數是否列在mrt.json跟 region.json裡

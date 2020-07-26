@@ -9,12 +9,13 @@ namespace RunFor591.Entity
     //用來儲存match的物件
     public class ArchiveHouse
     {
-        public Dictionary<DateTime, List<MatchHouse>> houseList { get; set; }
+       public List<houseObj> houseList { get; set; } = new List<houseObj>();
     }
 
-    public class MatchHouse
+    public class houseObj
     {
-        public int houseId { get; set; }
-        public bool IsNotify { get; set; }
+        public int postId { get; set; }
+        public DateTime createTime { get; set; }
     }
+
 }

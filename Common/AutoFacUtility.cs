@@ -17,7 +17,7 @@ namespace RunFor591.Common
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<LineNotify>().As<INotify>();  
-            builder.RegisterType<JsonBin>().As<IDataBase>();
+            builder.RegisterType<JsonBlob>().As<IDataBase>();
             Container = builder.Build();
         }
     }

@@ -43,6 +43,14 @@ https://jsfiddle.net/puwea23b/
 
 
 ---------  
+使用lib列表:
+AutoFac  
+LineNotify  
+JsonConfig  
+RestSharp  
+UnitTest
+
+---------  
 其他:  
 安裝的時候可能需要將專案output type選成windows應用程式  
 todo:  

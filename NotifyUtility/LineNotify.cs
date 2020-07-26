@@ -19,7 +19,7 @@ namespace RunFor591
         private void LineNotifyApi(LineNotifyEntity form,byte[] imageByte = null)
         {
             var linetoken = Setting.GetLineToken();
-            var client = new RestClient("https://notify-api.line.me/api/notify");
+            var client = new RestClient(UrlGenerator._LineNotifyUrl);
             var request = new RestRequest();
             request.Method = Method.POST;
             if (imageByte == null)

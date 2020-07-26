@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,13 +37,21 @@ namespace RunFor591.Common
         //取得json db的url位置
         public static string GetJsonHostingUrlPath()
         {
-            var path =  Config.User.JsonHostingUrlPath;
-            if (string.IsNullOrEmpty(path))
-            {
-                throw new ArgumentException("Invalid setting, json hosting url cannot be empty.");
-            }
-            return path;
+            return Config.User.JsonHostingUrlPath;
         }
+
+        public static int GetDataKeepHour()
+        {
+            return Config.User.DataKeepHour;
+        }
+
+        //暫不支援 會造成file lock
+//        public static void SetJsonHostingUrlPath(string path)
+//        {
+//            Config.User.JsonHostingUrlPath = path;
+//            var modifiedJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(Config.User);
+//            File.WriteAllText("settings.conf",modifiedJsonString);
+//        }
 
         public static string GetLineToken()
         {
