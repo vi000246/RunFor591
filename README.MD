@@ -29,6 +29,10 @@ https://blog.miniasp.com/post/2020/02/17/Go-Through-LINE-Notify-Without-Any-Code
 https://notify-bot.line.me/doc/en/  
 
 ---------  
+Demo:
+![Sample](https://github.com/vi000246/RunFor591/blob/master/Demo/demo.png?raw=true)
+---------
+
 591 api analyze:  
 捷運列表  
 https://s.591.com.tw/build/widget/config/_subway.js?v=a6d45d1200  
