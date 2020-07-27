@@ -53,9 +53,3 @@ LineNotify
 JsonConfig  
 RestSharp  
 UnitTest
-
----------  
-* ### 其他:  
-安裝的時候可能需要將專案output type選成windows應用程式  
-todo:  
-啟動service時，沒辨法寫log到logfile  
