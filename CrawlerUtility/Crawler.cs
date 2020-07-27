@@ -41,6 +41,10 @@ namespace RunFor591
                 Helper.WriteMultipleLineLig("新物件列表(排除需通知物件):", matchHouse.Except(ShouldAlertHouse)
                     .Select(x => x.title + "url:" + x.houseUrl).ToList(), log);
             }
+            else
+            {
+                log.Info("找不到符合條件的最新物件");
+            }
 
             if (ShouldAlertHouse.Any())
             {
