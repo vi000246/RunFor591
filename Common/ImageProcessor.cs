@@ -59,23 +59,35 @@ namespace RunFor591.Common
             var width = 0;
             var height = 0;
 
-            foreach (var image in images)
+            //將圖片每三個一組
+            int groupByEveryImageCount = 3;
+            var imgGroup = images.Select((value, index) => new {PairNum = index / groupByEveryImageCount, value})
+                .GroupBy(pair => pair.PairNum)
+                .Select(grp => grp.Select(g => g.value));
+            foreach (var group in imgGroup)
             {
-                    width += image.Width;
-                    height = image.Height > height ? image.Height : height;
-            }
+                height += group.Max(x => x.Height);
+                var currentTotalWidth = group.Sum(x => x.Width);
+                width = currentTotalWidth > width ? currentTotalWidth : width;
+            } 
 
             var bitmap = new Bitmap(width, height);
             using (var g = Graphics.FromImage(bitmap))
             {
-                    var localWidth = 0;
-                    foreach (var image in images)
+                var localWidth = 0;
+                var localHeight = 0;
+
+                foreach (var group in imgGroup)
+                {
+                    localWidth = 0;
+                    foreach (var image in group)
                     {
-                        g.DrawImage(image, localWidth, 0);
+                        g.DrawImage(image, localWidth, localHeight);
                         localWidth += image.Width;
                     }
-            }
-            return bitmap;
+                    localHeight += group.Max(x=>x.Height);
+                }
+            } return bitmap;
         }
         private static ImageCodecInfo GetEncoder(ImageFormat format)
         {
