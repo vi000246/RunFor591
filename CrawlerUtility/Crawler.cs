@@ -38,7 +38,7 @@ namespace RunFor591
             var ShouldAlertHouse = GetShouldAlertHouseFromDb(matchHouse);
             if (matchHouse.Any())
             {
-                Helper.WriteMultipleLineLig("新物件列表(排除需通知物件):", matchHouse.Except(ShouldAlertHouse)
+                Helper.WriteMultipleLineLig("新物件列表(排除尚未通知物件):", matchHouse.Except(ShouldAlertHouse)
                     .Select(x => x.title + "url:" + x.houseUrl).ToList(), log);
             }
             else
