@@ -34,12 +34,17 @@ namespace RunFor591
             var csrfToken = GetCSRFToken();
             var houseList = GetHouseList(csrfToken);
             var matchHouse = FilterHouse(houseList);
-            
-            var ShouldAlertHouse = GetShouldAlertHouseFromDb(matchHouse);
+            var archiveHouse = GetAllDataFromDB();
+            var ShouldAlertHouse = GetShouldAlertHouse(matchHouse, archiveHouse);
             if (matchHouse.Any())
             {
+                //取得這筆物件被存到db的時間
+                var createTime = archiveHouse.houseList?.Where(x => x.postId == x.postId).FirstOrDefault().createTime;
                 Helper.WriteMultipleLineLig("新物件列表(排除尚未通知物件):", matchHouse.Except(ShouldAlertHouse)
-                    .Select(x => x.title + "url:" + x.houseUrl).ToList(), log);
+                    .Select(x => 
+                        x.title +
+                        (createTime.HasValue ? (" DB createTime:" + createTime.Value.ToString("yyyy/MM/dd HH:mm:ss")):"") +
+                        " URL:" + x.houseUrl).ToList(), log);
             }
             else
             {
@@ -164,11 +169,15 @@ namespace RunFor591
             return entityList;
         }
 
-        //取得已發送過通知的房屋列表，並過濾出沒發送通知的列表
-        public IEnumerable<houseEntity> GetShouldAlertHouseFromDb(IEnumerable<houseEntity> houseList)
+        public ArchiveHouse GetAllDataFromDB()
         {
             var dbClient = AutoFacUtility.Container.Resolve<IDataBase>();
-            var archiveHouse = dbClient.GetAllDataFromDB();
+            return dbClient.GetAllDataFromDB();
+        }
+
+        //取得已發送過通知的房屋列表，並過濾出沒發送通知的列表
+        public IEnumerable<houseEntity> GetShouldAlertHouse(IEnumerable<houseEntity> houseList,ArchiveHouse archiveHouse)
+        {
             if (archiveHouse.houseList != null && archiveHouse.houseList.Count > 0)
             {
                 var archiveIds = archiveHouse.houseList.Select(x => x.postId).ToList();
