@@ -187,3 +187,4 @@ F:\Projects\Github\RunFor591\RunFor591\bin\Debug\System.Numerics.Vectors.xml
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\System.Text.Encodings.Web.xml
 F:\Projects\Github\RunFor591\RunFor591\bin\Debug\System.Threading.Tasks.Extensions.xml
+F:\Projects\Github\RunFor591\RunFor591\obj\Debug\RunFor591.csprojAssemblyReference.cache
