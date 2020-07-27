@@ -238,5 +238,8 @@
     <None Include="README.MD" />
     <None Include="settings.conf" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Demo\demo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
