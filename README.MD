@@ -5,10 +5,12 @@
 --------  
 
 * #### Install:  
-RunFor591.exe /i or RunFor591.exe /install  
+雙擊install.bat  
+或是用cmd輸入RunFor591.exe /i or RunFor591.exe /install  
 
 * #### UnInstall:  
-RunFor591.exe /u or RunFor591.exe /uninstall  
+ 雙擊unInstall.bat  
+或是用cmd輸入RunFor591.exe /u or RunFor591.exe /uninstall  
 
 --------  
 * ### Build & Deploy:  
