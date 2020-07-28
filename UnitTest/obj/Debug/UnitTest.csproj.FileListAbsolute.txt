@@ -114,7 +114,6 @@ F:\Projects\Github\RunFor591\RunFor591\UnitTest\bin\Debug\zh-Hant\Microsoft.Visu
 F:\Projects\Github\RunFor591\RunFor591\UnitTest\bin\Debug\zh-Hant\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
 F:\Projects\Github\RunFor591\RunFor591\UnitTest\bin\Debug\LocationEntity\MRT.json
 F:\Projects\Github\RunFor591\RunFor591\UnitTest\bin\Debug\LocationEntity\Region.json
-F:\Projects\Github\RunFor591\RunFor591\UnitTest\bin\Debug\settings.conf
 F:\Projects\Github\RunFor591\RunFor591\UnitTest\bin\Debug\log4net.config
 F:\Projects\Github\RunFor591\RunFor591\UnitTest\bin\Debug\UnitTest.dll.config
 F:\Projects\Github\RunFor591\RunFor591\UnitTest\bin\Debug\UnitTest.dll

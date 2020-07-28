@@ -160,6 +160,7 @@ namespace RunFor591
                 entity.street_name = obj.street_name;
                 entity.kind_name = obj.kind_name;
                 entity.layout = obj.layout;
+                entity.area = obj.area.ToString();
 
 
                 entityList.Add(entity);

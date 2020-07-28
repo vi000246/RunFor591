@@ -37,6 +37,8 @@ namespace RunFor591.Entity
         public string price { get; set; }
         //格局
         public string layout { get; set; }
+        //坪數
+        public string area { get; set; }
 
         //縣市名稱
         public string regionName { get; set; }
