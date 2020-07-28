@@ -44,11 +44,23 @@ namespace RunFor591.Common
 
         public static List<Image> ConvertUrlToImages(PhotoListResponse data)
         {
+
             var imageList = new List<Image>();
-            imageList.Add(ReadImage(data.data.cover));
-            foreach (var img in data.data.large)
+            try
             {
-                imageList.Add(ReadImage(img));
+                if (!string.IsNullOrEmpty(data.data.cover))
+                    imageList.Add(ReadImage(data.data.cover));
+                if (data.data != null)
+                {
+                    foreach (var img in data.data.large)
+                    {
+                        imageList.Add(ReadImage(img));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return imageList;
             }
 
             return imageList;
