@@ -233,11 +233,6 @@ D:\Projects\RunFor591\bin\Debug\System.Text.Encodings.Web.dll
 D:\Projects\RunFor591\bin\Debug\System.Threading.Tasks.Extensions.dll
 D:\Projects\RunFor591\bin\Debug\Autofac.pdb
 D:\Projects\RunFor591\bin\Debug\Autofac.xml
-D:\Projects\RunFor591\bin\Debug\HtmlAgilityPack.pdb
-D:\Projects\RunFor591\bin\Debug\HtmlAgilityPack.xml
-D:\Projects\RunFor591\bin\Debug\JsonConfig.pdb
-D:\Projects\RunFor591\bin\Debug\JsonFx.xml
-D:\Projects\RunFor591\bin\Debug\log4net.xml
 D:\Projects\RunFor591\bin\Debug\Microsoft.AspNetCore.Authentication.Abstractions.xml
 D:\Projects\RunFor591\bin\Debug\Microsoft.AspNetCore.Authentication.Core.xml
 D:\Projects\RunFor591\bin\Debug\Microsoft.AspNetCore.Authorization.xml
@@ -265,9 +260,7 @@ D:\Projects\RunFor591\bin\Debug\Microsoft.Extensions.ObjectPool.xml
 D:\Projects\RunFor591\bin\Debug\Microsoft.Extensions.Options.xml
 D:\Projects\RunFor591\bin\Debug\Microsoft.Extensions.Primitives.xml
 D:\Projects\RunFor591\bin\Debug\Microsoft.Net.Http.Headers.xml
-D:\Projects\RunFor591\bin\Debug\Newtonsoft.Json.xml
 D:\Projects\RunFor591\bin\Debug\RestSharp.xml
-D:\Projects\RunFor591\bin\Debug\SimpleServices.pdb
 D:\Projects\RunFor591\bin\Debug\System.Buffers.xml
 D:\Projects\RunFor591\bin\Debug\System.Diagnostics.DiagnosticSource.xml
 D:\Projects\RunFor591\bin\Debug\System.Memory.xml
@@ -275,8 +268,9 @@ D:\Projects\RunFor591\bin\Debug\System.Numerics.Vectors.xml
 D:\Projects\RunFor591\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Projects\RunFor591\bin\Debug\System.Text.Encodings.Web.xml
 D:\Projects\RunFor591\bin\Debug\System.Threading.Tasks.Extensions.xml
-D:\Projects\RunFor591\obj\Debug\RunFor591.csprojAssemblyReference.cache
 D:\Projects\RunFor591\obj\Debug\RunFor591.csproj.CoreCompileInputs.cache
 D:\Projects\RunFor591\obj\Debug\RunFor591.csproj.CopyComplete
 D:\Projects\RunFor591\obj\Debug\RunFor591.exe
 D:\Projects\RunFor591\obj\Debug\RunFor591.pdb
+D:\Projects\RunFor591\bin\Debug\install.bat
+D:\Projects\RunFor591\bin\Debug\unInstall.bat
