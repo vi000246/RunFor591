@@ -5,12 +5,9 @@
 --------  
 
 * #### Install:  
-直接執行install.bat  
-或是在commain line 輸入 RunFor591.exe /i or RunFor591.exe /install  
-再到windows service啟動服務
+RunFor591.exe /i or RunFor591.exe /install  
 
 * #### UnInstall:  
-直接執行uninstall.bat  
 RunFor591.exe /u or RunFor591.exe /uninstall  
 
 --------  
