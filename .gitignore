@@ -2,3 +2,4 @@
 /obj
 .vs/RunFor591/v16/Server/sqlite3/db.lock
 settings.conf
+/.vs
