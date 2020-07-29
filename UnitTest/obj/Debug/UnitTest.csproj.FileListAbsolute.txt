@@ -242,7 +242,6 @@ D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Http.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Http.Extensions.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Http.Features.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Mvc.Abstractions.dll
-D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Mvc.Core.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Routing.Abstractions.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Routing.dll
@@ -251,7 +250,6 @@ D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.DotNet.PlatformAbstractions.d
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
-D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.Extensions.DependencyModel.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.Extensions.FileProviders.Abstractions.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.Extensions.Hosting.Abstractions.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
@@ -292,7 +290,6 @@ D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Http.Abstractions.
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Http.Extensions.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Http.Features.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Mvc.Abstractions.xml
-D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Mvc.Core.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.ResponseCaching.Abstractions.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Routing.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Routing.Abstractions.xml
@@ -309,7 +306,6 @@ D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.Extensions.Primitives.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.Net.Http.Headers.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
-D:\Projects\RunFor591\UnitTest\bin\Debug\Newtonsoft.Json.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\RestSharp.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\System.Buffers.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\System.Diagnostics.DiagnosticSource.xml
@@ -318,8 +314,6 @@ D:\Projects\RunFor591\UnitTest\bin\Debug\System.Numerics.Vectors.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\System.Text.Encodings.Web.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\System.Threading.Tasks.Extensions.xml
-D:\Projects\RunFor591\UnitTest\bin\Debug\Autofac.pdb
-D:\Projects\RunFor591\UnitTest\bin\Debug\Autofac.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 D:\Projects\RunFor591\UnitTest\obj\Debug\UnitTest.csprojAssemblyReference.cache
 D:\Projects\RunFor591\UnitTest\obj\Debug\UnitTest.csproj.CoreCompileInputs.cache

@@ -68,10 +68,17 @@ namespace RunFor591
             IEnumerable<houseEntity> houseList = new List<houseEntity>();
             foreach (var url in urls)
             {
-                var response = Get591Response(url, Method.POST,csrfToken).Content;
-                var houseResponse = JsonConvert.DeserializeObject<ResponseHouseEntity>(response);
-                var entity = Convert591DataToEntity(houseResponse.data.data);
-                houseList = houseList.Concat(entity);
+                try
+                {
+                    var response = Get591Response(url, Method.POST, csrfToken).Content;
+                    var houseResponse = JsonConvert.DeserializeObject<ResponseHouseEntity>(response);
+                    var entity = Convert591DataToEntity(houseResponse.data.data);
+                    houseList = houseList.Concat(entity);
+                }
+                catch (Exception ex)
+                {
+                    log.Error("GetHouseList error. msg:"+ex.Message);
+                }
             }
             
             return houseList;
