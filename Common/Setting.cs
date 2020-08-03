@@ -40,10 +40,10 @@ namespace RunFor591.Common
             return Config.User.JsonHostingUrlPath;
         }
 
-        //設定已通知的房子的保留小時，預設25hr，因為591的new icon也只會存在24hr,就不會撈到重覆資料 type:int 
+        //設定已通知的房子的保留小時，預設48hr，因為591的new icon也只會存在24hr,就不會撈到重覆資料 type:int 
         public static int GetDataKeepHour()
         {
-            return 25;
+            return 48;
         }
 
         //暫不支援 會造成file lock
