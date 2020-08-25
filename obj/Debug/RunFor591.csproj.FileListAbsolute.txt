@@ -367,4 +367,3 @@ F:\Projects\Github\RunFor591v2\bin\Debug\System.Runtime.CompilerServices.Unsafe.
 F:\Projects\Github\RunFor591v2\bin\Debug\System.Text.Encodings.Web.xml
 F:\Projects\Github\RunFor591v2\bin\Debug\System.Threading.Tasks.Extensions.xml
 F:\Projects\Github\RunFor591v2\obj\Debug\RunFor591.csproj.CopyComplete
-F:\Projects\Github\RunFor591v2\obj\Debug\RunFor591.csprojAssemblyReference.cache

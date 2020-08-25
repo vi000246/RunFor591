@@ -39,7 +39,7 @@ namespace RunFor591
             if (matchHouse.Any())
             {
                 //取得這筆物件被存到db的時間
-                var createTime = archiveHouse.houseList?.Where(x => x.postId == x.postId).FirstOrDefault().createTime;
+                var createTime = archiveHouse.houseList?.Where(x => x.postId == x.postId).FirstOrDefault()?.createTime;
                 Helper.WriteMultipleLineLig("新物件列表(排除尚未通知物件):", matchHouse.Except(ShouldAlertHouse)
                     .Select(x => 
                         x.title +
