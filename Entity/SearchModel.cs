@@ -34,6 +34,7 @@ namespace RunFor591.Entity
         public string NotCover { get; set; }
         public string Floor { get; set; }
         public string Option { get; set; }
+        public string other { get; set; }
         public string FirstRow { get; set; }
 
     }
