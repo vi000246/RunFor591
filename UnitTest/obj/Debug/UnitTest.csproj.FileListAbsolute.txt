@@ -267,7 +267,6 @@ D:\Projects\RunFor591\UnitTest\bin\Debug\System.ComponentModel.Annotations.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\System.Diagnostics.DiagnosticSource.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\System.Memory.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\System.Numerics.Vectors.dll
-D:\Projects\RunFor591\UnitTest\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\System.Text.Encodings.Web.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\System.Threading.Tasks.Extensions.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\log4net.dll
@@ -276,7 +275,6 @@ D:\Projects\RunFor591\UnitTest\bin\Debug\SimpleServices.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\Autofac.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\JsonConfig.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-D:\Projects\RunFor591\UnitTest\bin\Debug\JsonFx.dll
 D:\Projects\RunFor591\UnitTest\bin\Debug\RunFor591.pdb
 D:\Projects\RunFor591\UnitTest\bin\Debug\RunFor591.exe.config
 D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.AspNetCore.Authentication.Abstractions.xml
@@ -311,11 +309,7 @@ D:\Projects\RunFor591\UnitTest\bin\Debug\System.Buffers.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\System.Diagnostics.DiagnosticSource.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\System.Memory.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\System.Numerics.Vectors.xml
-D:\Projects\RunFor591\UnitTest\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\System.Text.Encodings.Web.xml
-D:\Projects\RunFor591\UnitTest\bin\Debug\System.Threading.Tasks.Extensions.xml
-D:\Projects\RunFor591\UnitTest\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-D:\Projects\RunFor591\UnitTest\obj\Debug\UnitTest.csprojAssemblyReference.cache
 D:\Projects\RunFor591\UnitTest\obj\Debug\UnitTest.csproj.CoreCompileInputs.cache
 D:\Projects\RunFor591\UnitTest\obj\Debug\UnitTest.csproj.CopyComplete
 D:\Projects\RunFor591\UnitTest\obj\Debug\UnitTest.dll
@@ -435,3 +429,12 @@ F:\Projects\Github\RunFor591v2\UnitTest\bin\Debug\SimpleServices.pdb
 F:\Projects\Github\RunFor591v2\UnitTest\bin\Debug\Autofac.pdb
 F:\Projects\Github\RunFor591v2\UnitTest\bin\Debug\Autofac.xml
 F:\Projects\Github\RunFor591v2\UnitTest\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Projects\RunFor591\UnitTest\obj\Debug\UnitTest.csproj.AssemblyReference.cache
+D:\Projects\RunFor591\UnitTest\bin\Debug\Autofac.pdb
+D:\Projects\RunFor591\UnitTest\bin\Debug\Autofac.xml
+D:\Projects\RunFor591\UnitTest\bin\Debug\HtmlAgilityPack.pdb
+D:\Projects\RunFor591\UnitTest\bin\Debug\HtmlAgilityPack.xml
+D:\Projects\RunFor591\UnitTest\bin\Debug\JsonConfig.pdb
+D:\Projects\RunFor591\UnitTest\bin\Debug\log4net.xml
+D:\Projects\RunFor591\UnitTest\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\RunFor591\UnitTest\bin\Debug\SimpleServices.pdb

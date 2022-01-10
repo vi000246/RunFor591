@@ -367,3 +367,17 @@ F:\Projects\Github\RunFor591v2\bin\Debug\System.Runtime.CompilerServices.Unsafe.
 F:\Projects\Github\RunFor591v2\bin\Debug\System.Text.Encodings.Web.xml
 F:\Projects\Github\RunFor591v2\bin\Debug\System.Threading.Tasks.Extensions.xml
 F:\Projects\Github\RunFor591v2\obj\Debug\RunFor591.csproj.CopyComplete
+D:\Projects\RunFor591\bin\Debug\Autofac.dll
+D:\Projects\RunFor591\bin\Debug\HtmlAgilityPack.dll
+D:\Projects\RunFor591\bin\Debug\JsonConfig.dll
+D:\Projects\RunFor591\bin\Debug\log4net.dll
+D:\Projects\RunFor591\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\RunFor591\bin\Debug\SimpleServices.dll
+D:\Projects\RunFor591\bin\Debug\Autofac.pdb
+D:\Projects\RunFor591\bin\Debug\Autofac.xml
+D:\Projects\RunFor591\bin\Debug\HtmlAgilityPack.pdb
+D:\Projects\RunFor591\bin\Debug\HtmlAgilityPack.xml
+D:\Projects\RunFor591\bin\Debug\JsonConfig.pdb
+D:\Projects\RunFor591\bin\Debug\log4net.xml
+D:\Projects\RunFor591\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\RunFor591\bin\Debug\SimpleServices.pdb
