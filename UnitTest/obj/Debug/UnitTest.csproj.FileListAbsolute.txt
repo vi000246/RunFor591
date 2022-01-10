@@ -438,3 +438,5 @@ D:\Projects\RunFor591\UnitTest\bin\Debug\JsonConfig.pdb
 D:\Projects\RunFor591\UnitTest\bin\Debug\log4net.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\Newtonsoft.Json.xml
 D:\Projects\RunFor591\UnitTest\bin\Debug\SimpleServices.pdb
+D:\Projects\RunFor591\UnitTest\bin\Debug\JsonFx.dll
+D:\Projects\RunFor591\UnitTest\bin\Debug\JsonFx.xml

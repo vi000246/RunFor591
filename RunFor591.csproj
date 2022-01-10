@@ -45,6 +45,9 @@
     <Reference Include="JsonConfig">
       <HintPath>packages\JsonConfig.1.0.0\lib\JsonConfig.dll</HintPath>
     </Reference>
+    <Reference Include="JsonFx">
+      <HintPath>packages\JsonFx.2.0.1209.2802\lib\net40\JsonFx.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
