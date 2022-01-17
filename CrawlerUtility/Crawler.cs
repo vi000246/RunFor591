@@ -180,7 +180,8 @@ namespace RunFor591
         public ArchiveHouse GetAllDataFromDB()
         {
             var dbClient = AutoFacUtility.Container.Resolve<IDataBase>();
-            return dbClient.GetAllDataFromDB();
+            ArchiveHouse FuncGetAllDataFromDb() => dbClient.GetAllDataFromDB();
+            return Retry.Do<ArchiveHouse>(FuncGetAllDataFromDb, TimeSpan.FromSeconds(20), 4);
         }
 
         //取得已發送過通知的房屋列表，並過濾出沒發送通知的列表
