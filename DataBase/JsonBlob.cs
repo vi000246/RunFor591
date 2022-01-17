@@ -59,7 +59,18 @@ namespace RunFor591
             }
 
             var raw = makeApiRequest(jsonUrl);
-            var response =  JsonConvert.DeserializeObject<ArchiveHouse>(raw.Content);
+
+            //有時候會抓不到response，直接回傳空的，懶得handle exception了
+            var response = new ArchiveHouse();
+            try
+            { 
+                response = JsonConvert.DeserializeObject<ArchiveHouse>(raw.Content);
+            }
+            catch
+            {
+                return response;
+            }
+
             return response;
         }
 

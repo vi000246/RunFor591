@@ -192,7 +192,6 @@
     <Compile Include="Common\Helper.cs" />
     <Compile Include="Common\ImageProcessor.cs" />
     <Compile Include="Common\InvalidSettingException.cs" />
-    <Compile Include="CrawlerUtility\Retry.cs" />
     <Compile Include="CrawlerUtility\UrlGenerator.cs" />
     <Compile Include="DataBase\IDataBase.cs" />
     <Compile Include="DataBase\LocationJsonReader.cs" />
