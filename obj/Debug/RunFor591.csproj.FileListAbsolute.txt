@@ -383,3 +383,4 @@ D:\Projects\RunFor591\bin\Debug\Newtonsoft.Json.xml
 D:\Projects\RunFor591\bin\Debug\SimpleServices.pdb
 D:\Projects\RunFor591\bin\Debug\JsonFx.dll
 D:\Projects\RunFor591\bin\Debug\JsonFx.xml
+D:\Projects\RunFor591\obj\Debug\RunFor591.csproj.AssemblyReference.cache

@@ -184,3 +184,24 @@ System.ComponentModel.Win32Exception: 指定的服務已標註刪除。
 已經成功完成認可階段。
 
 已經完成交易性的安裝。
+
+
+正開始解除安裝。
+請參閱 D:\Projects\RunFor591\bin\Debug\RunFor591.exe 組件進度的記錄檔內容。
+檔案是位於 D:\Projects\RunFor591\bin\Debug\RunFor591.InstallLog。
+
+已經完成解除安裝。
+
+正在執行交易性的安裝。
+
+正在開始安裝程式的安裝階段。
+請參閱 D:\Projects\RunFor591\bin\Debug\RunFor591.exe 組件進度的記錄檔內容。
+檔案是位於 D:\Projects\RunFor591\bin\Debug\RunFor591.InstallLog。
+
+安裝階段已經成功完成，正在開始認可階段。
+請參閱 D:\Projects\RunFor591\bin\Debug\RunFor591.exe 組件進度的記錄檔內容。
+檔案是位於 D:\Projects\RunFor591\bin\Debug\RunFor591.InstallLog。
+
+已經成功完成認可階段。
+
+已經完成交易性的安裝。

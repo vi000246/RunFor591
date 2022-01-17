@@ -68,7 +68,7 @@ namespace RunFor591
             }
             catch
             {
-                return response;
+                return new ArchiveHouse();
             }
 
             return response;
