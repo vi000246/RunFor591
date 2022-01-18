@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using Autofac;
+using Newtonsoft.Json;
 using RunFor591.Common;
 using RunFor591.CrawlerUtility;
 using RunFor591.NotifyUtility;
@@ -46,18 +47,22 @@ namespace RunFor591
                 var msg = "Invalid Setting" + ex.Message;
                 log.Error(msg);
                 AppContext.Log(msg);
-                Helper.ShowMessageBox(msg,"Invalid settings.conf");
+                Helper.ShowMessageBox(msg, "Invalid settings.conf");
                 //如果是windows service，就用serviceController停止，service name寫在program.cs
-                if(!Environment.UserInteractive)
+                if (!Environment.UserInteractive)
                     new ServiceController("RunFor591").Stop();
                 else
                 {
                     Environment.Exit(0);
                 }
             }
+            catch (JsonReaderException ex)
+            {
+                log.Error(ex.Message);
+            }
             catch (Exception ex)
             {
-                var msg = "Service Error. msg:" + ex.Message+ex.StackTrace;
+                var msg = "Service Error. msg:" + ex.Message + ex.StackTrace;
                 AppContext.Log(msg);
                 log.Error(msg);
                 var notifyService = AutoFacUtility.Container.Resolve<INotify>();
