@@ -231,3 +231,27 @@
    logtoconsole = 
    logfile = D:\Projects\RunFor591\bin\Debug\RunFor591.InstallLog
    assemblypath = D:\Projects\RunFor591\bin\Debug\RunFor591.exe
+正在解除安裝組件 'D:\Projects\RunFor591\bin\Debug\RunFor591.exe'。
+受影響的參數為:
+   logtoconsole = 
+   logfile = D:\Projects\RunFor591\bin\Debug\RunFor591.InstallLog
+   assemblypath = D:\Projects\RunFor591\bin\Debug\RunFor591.exe
+正在移除 EventLog 來源 RunFor591。
+正在移除 EventLog 來源 RunFor591。
+警告: 來源 RunFor591 未於本機電腦上註冊。
+已從系統中移除服務 RunFor591...
+已經成功從系統移除服務 RunFor591。
+正在安裝組件 'D:\Projects\RunFor591\bin\Debug\RunFor591.exe'。
+受影響的參數為:
+   logtoconsole = 
+   logfile = D:\Projects\RunFor591\bin\Debug\RunFor591.InstallLog
+   assemblypath = D:\Projects\RunFor591\bin\Debug\RunFor591.exe
+正在安裝服務 RunFor591...
+已經成功安裝服務 RunFor591。
+正在記錄檔 Application 中建立 EventLog 來源 RunFor591...
+正在記錄檔 Application 中建立 EventLog 來源 RunFor591...
+正在認可組件 'D:\Projects\RunFor591\bin\Debug\RunFor591.exe'。
+受影響的參數為:
+   logtoconsole = 
+   logfile = D:\Projects\RunFor591\bin\Debug\RunFor591.InstallLog
+   assemblypath = D:\Projects\RunFor591\bin\Debug\RunFor591.exe

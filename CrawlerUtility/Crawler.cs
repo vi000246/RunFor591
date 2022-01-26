@@ -186,14 +186,21 @@ namespace RunFor591
         //取得已發送過通知的房屋列表，並過濾出沒發送通知的列表
         public IEnumerable<houseEntity> GetShouldAlertHouse(IEnumerable<houseEntity> houseList,ArchiveHouse archiveHouse)
         {
-            if (archiveHouse.houseList != null && archiveHouse.houseList.Count > 0)
+            try
             {
-                var archiveIds = archiveHouse.houseList.Select(x => x.postId).ToList();
-                return houseList.Where(x => !archiveIds.Contains(x.post_id));
+                if (archiveHouse != null && archiveHouse.houseList != null && archiveHouse.houseList.Count > 0)
+                {
+                    var archiveIds = archiveHouse.houseList.Select(x => x.postId).ToList();
+                    return houseList.Where(x => !archiveIds.Contains(x.post_id));
+                }
+                else
+                {
+                    return houseList;
+                }
             }
-            else
+            catch
             {
-                return houseList;
+                return new List<houseEntity>();
             }
         }
 
